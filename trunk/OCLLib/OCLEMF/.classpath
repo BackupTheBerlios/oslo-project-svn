@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/OCLCommon"/>
+	<classpathentry kind="lib" path="E:/eclipse-test/plugins/uk.ac.kent.cs.ocl.utils_1.1.0/KMF_Util.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse-test/plugins/org.eclipse.emf.ecore_2.0.1/runtime/ecore.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse-test/plugins/org.eclipse.emf.common_2.0.1/runtime/common.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse-test/plugins/uk.ac.kent.cs.ocl.utils_1.1.0/KMFpatterns.jar"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

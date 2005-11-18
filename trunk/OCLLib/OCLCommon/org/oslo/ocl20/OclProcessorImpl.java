@@ -35,6 +35,12 @@ import uk.ac.kent.cs.kmf.util.ILog;
  */
 
 abstract public class OclProcessorImpl implements OclProcessor {
+	
+	/*
+	 * add by Heini
+	 */
+	public RuntimeEnvironment renv_=null;
+	
     public OclProcessorImpl(ILog log) {
         this.log = log;
     }
@@ -326,6 +332,12 @@ abstract public class OclProcessorImpl implements OclProcessor {
         return evaluate(reader, log);
     }
     public List evaluate(String str, Environment env, RuntimeEnvironment renv, ILog log) {
+    	/*
+    	 * add by Heini
+    	 */
+    	renv_=renv;
+    	
+    	
         List cs = analyse(str, env, log);
         if (cs == null)
             return null;
@@ -338,7 +350,22 @@ abstract public class OclProcessorImpl implements OclProcessor {
         }
         return result;
     }
+    
+    public List evaluate_2(String str, Environment env, RuntimeEnvironment renv, ILog log) 
+    {
+    	/* returns null 
+    	 * the corresponding result provides evaluate_2 in EmfOclProcessorImpl
+    	 */
+    	return null;
+    }
+    
     public List evaluate(Reader reader, Environment env, RuntimeEnvironment renv, ILog log) {
+    	
+    	/*
+    	 * add by Heini
+    	 */
+    	renv_=renv;
+    	
         List cs = analyse(reader, env, log);
         if (cs == null)
             return null;
@@ -717,4 +744,14 @@ abstract public class OclProcessorImpl implements OclProcessor {
         RuntimeEnvironment renv = new RuntimeEnvironmentImpl();
         return renv;
     }
+    
+    /*
+     *  add by Heini
+     */
+    public RuntimeEnvironment getRuntimeEnvironment()
+    {
+    	return renv_;
+    }
+    
+   
 }

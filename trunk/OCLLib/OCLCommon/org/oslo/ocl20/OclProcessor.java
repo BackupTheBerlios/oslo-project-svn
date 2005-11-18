@@ -28,6 +28,11 @@ import uk.ac.kent.cs.kmf.util.ILog;
  * Window>Preferences>Java>Code Generation>Code and Comments
  */
 public interface OclProcessor {
+	
+		/*
+		 * add by Heini
+		 */
+		public RuntimeEnvironment renv_=null;
 		public Boolean getDebug();
 		public void setDebug(Boolean d);
 		public ILog getLog();
@@ -112,6 +117,7 @@ public interface OclProcessor {
 		public List evaluate(String str, Object self);
 		public List evaluate(String str, Object self, ILog log);
 		public List evaluate(String str, Environment env, RuntimeEnvironment renv, ILog log);
+		public List evaluate_2(String str, Environment env, RuntimeEnvironment renv, ILog log);
 		
 		public List evaluate(Reader reader, Object self, ILog log);
 		public List evaluate(Reader reader, Object self);
@@ -163,6 +169,13 @@ public interface OclProcessor {
 		public RuntimeEnvironment runtimeEnvironment();
 		public RuntimeEnvironment runtimeEnvironment(String name, Object obj);
 
+		/*
+		 *  Get the current runtime environment
+		 *  (needed for allInstances()
+		 *  add by Heini
+		 */
+		public RuntimeEnvironment getRuntimeEnvironment();
+		
         public void addModel(Object mdl);
 
 }

@@ -850,9 +850,24 @@ public class OclSemanticAnalyserVisitorImpl extends VisitorImpl implements astVi
                     result.setType(type);
                     //--- Maybe a Classifier --
                 } else if (element != null && element instanceof Classifier) {
+                	
+                	if (host.getParent()!=null) {
+                		String operation=host.getParent().toString();
+                		operation=operation.substring(pathNameStr.length()+1);
+                		if (operation.equals("allInstances")) {
+                			type = (Classifier) element;
+                			result = new TypeLiteralExp$Class(pathNameStr, Boolean.FALSE, (Classifier) element);
+                			result.setType(type);
+                		} else {
+                			type = processor.getTypeFactory().buildTypeType((Classifier) element);
+                            result = new TypeLiteralExp$Class(pathNameStr, Boolean.FALSE, (Classifier) element);
+                            result.setType(type);
+                		}
+                	} else {
                     type = processor.getTypeFactory().buildTypeType((Classifier) element);
                     result = new TypeLiteralExp$Class(pathNameStr, Boolean.FALSE, (Classifier) element);
                     result.setType(type);
+                	}
                 } else {
                     //--- Lookup for an implicit source and property 
                     NamedElement entry = env.lookupImplicitSourceForProperty(pathNameStr);

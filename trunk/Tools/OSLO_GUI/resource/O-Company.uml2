@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_UrpNEdy2Edmj8dN3q82Epg" name="company" appliedProfile="_UrpNEty2Edmj8dN3q82Epg _UrpNFdy2Edmj8dN3q82Epg _UrpNGNy2Edmj8dN3q82Epg">
+  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_UrpNEty2Edmj8dN3q82Epg">
+    <eAnnotations xmi:id="_UrpNE9y2Edmj8dN3q82Epg" source="attributes">
+      <details xmi:id="_UrpNFNy2Edmj8dN3q82Epg" key="version" value="0"/>
+    </eAnnotations>
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
+    <importedProfile href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
+  </packageImport>
+  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_UrpNFdy2Edmj8dN3q82Epg">
+    <eAnnotations xmi:id="_UrpNFty2Edmj8dN3q82Epg" source="attributes">
+      <details xmi:id="_UrpNF9y2Edmj8dN3q82Epg" key="version" value="0"/>
+    </eAnnotations>
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Intermediate.profile.uml2#_Cz7csK87Edih9-GG5afQ0g"/>
+    <importedProfile href="pathmap://UML2_PROFILES/Intermediate.profile.uml2#_Cz7csK87Edih9-GG5afQ0g"/>
+  </packageImport>
+  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_UrpNGNy2Edmj8dN3q82Epg">
+    <eAnnotations xmi:id="_UrpNGdy2Edmj8dN3q82Epg" source="attributes">
+      <details xmi:id="_UrpNGty2Edmj8dN3q82Epg" key="version" value="0"/>
+    </eAnnotations>
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Complete.profile.uml2#_M7pTkK87Edih9-GG5afQ0g"/>
+    <importedProfile href="pathmap://UML2_PROFILES/Complete.profile.uml2#_M7pTkK87Edih9-GG5afQ0g"/>
+  </packageImport>
+  <packageImport xmi:id="_UrpNG9y2Edmj8dN3q82Epg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_EfRZoK86EdieaYgxtVWN8Q"/>
+  </packageImport>
+  <ownedMember xmi:type="uml:Class" xmi:id="_UrpNHNy2Edmj8dN3q82Epg" name="Department">
+    <ownedAttribute xmi:id="_UrpNHdy2Edmj8dN3q82Epg" name="number" type="_UrpNXty2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNHty2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNH9y2Edmj8dN3q82Epg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNINy2Edmj8dN3q82Epg" name="division" type="_UrpNX9y2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNIdy2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNIty2Edmj8dN3q82Epg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNI9y2Edmj8dN3q82Epg" name="company" type="_UrpNKdy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true" association="_UrpNZty2Edmj8dN3q82Epg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNJNy2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNJdy2Edmj8dN3q82Epg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNJty2Edmj8dN3q82Epg" name="group" type="_UrpNVNy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true" association="_UrpNbdy2Edmj8dN3q82Epg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNJ9y2Edmj8dN3q82Epg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNKNy2Edmj8dN3q82Epg"/>
+    </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_UrpNKdy2Edmj8dN3q82Epg" name="Company">
+    <ownedAttribute xmi:id="_UrpNKty2Edmj8dN3q82Epg" name="departement" type="_UrpNHNy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true" association="_UrpNZty2Edmj8dN3q82Epg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNK9y2Edmj8dN3q82Epg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNLNy2Edmj8dN3q82Epg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNLdy2Edmj8dN3q82Epg" name="name" type="_UrpNX9y2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNLty2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNL9y2Edmj8dN3q82Epg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNMNy2Edmj8dN3q82Epg" name="employeeOfTheMonth" type="_UrpNPdy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true" association="_UrpNdNy2Edmj8dN3q82Epg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNMdy2Edmj8dN3q82Epg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNMty2Edmj8dN3q82Epg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNM9y2Edmj8dN3q82Epg" name="undefined" type="_UrpNPdy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true" association="_UrvTpNy2Edmj8dN3q82Epg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNNNy2Edmj8dN3q82Epg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNNdy2Edmj8dN3q82Epg"/>
+    </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_UrpNNty2Edmj8dN3q82Epg" name="Person">
+    <ownedAttribute xmi:id="_UrpNN9y2Edmj8dN3q82Epg" name="name" type="_UrpNX9y2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNONy2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNOdy2Edmj8dN3q82Epg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNOty2Edmj8dN3q82Epg" name="phone" type="_UrpNX9y2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNO9y2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNPNy2Edmj8dN3q82Epg" value="1"/>
+    </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_UrpNPdy2Edmj8dN3q82Epg" name="Employee">
+    <generalization xmi:id="_UrpNPty2Edmj8dN3q82Epg" general="_UrpNNty2Edmj8dN3q82Epg"/>
+    <ownedAttribute xmi:id="_UrpNP9y2Edmj8dN3q82Epg" name="title" type="_UrpNX9y2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNQNy2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNQdy2Edmj8dN3q82Epg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNQty2Edmj8dN3q82Epg" name="manager" type="_UrpNYNy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNQ9y2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNRNy2Edmj8dN3q82Epg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNRdy2Edmj8dN3q82Epg" name="location" type="_UrpNX9y2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNRty2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNR9y2Edmj8dN3q82Epg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNSNy2Edmj8dN3q82Epg" name="employmentType" type="_UrpNYdy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNSdy2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNSty2Edmj8dN3q82Epg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNS9y2Edmj8dN3q82Epg" name="undefined" type="_UrpNKdy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true" association="_UrpNdNy2Edmj8dN3q82Epg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNTNy2Edmj8dN3q82Epg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNTdy2Edmj8dN3q82Epg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNTty2Edmj8dN3q82Epg" name="company" type="_UrpNKdy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true" association="_UrvTpNy2Edmj8dN3q82Epg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNT9y2Edmj8dN3q82Epg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNUNy2Edmj8dN3q82Epg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNUdy2Edmj8dN3q82Epg" name="group" type="_UrpNVNy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true" association="_UrvTq9y2Edmj8dN3q82Epg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNUty2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNU9y2Edmj8dN3q82Epg" value="1"/>
+    </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_UrpNVNy2Edmj8dN3q82Epg" name="Group">
+    <ownedAttribute xmi:id="_UrpNVdy2Edmj8dN3q82Epg" name="department" type="_UrpNHNy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true" association="_UrpNbdy2Edmj8dN3q82Epg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNVty2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNV9y2Edmj8dN3q82Epg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNWNy2Edmj8dN3q82Epg" name="id" type="_UrpNX9y2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNWdy2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNWty2Edmj8dN3q82Epg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UrpNW9y2Edmj8dN3q82Epg" name="employees" type="_UrpNPdy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true" association="_UrvTq9y2Edmj8dN3q82Epg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNXNy2Edmj8dN3q82Epg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNXdy2Edmj8dN3q82Epg"/>
+    </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_UrpNXty2Edmj8dN3q82Epg" name="int"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_UrpNX9y2Edmj8dN3q82Epg" name="String"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_UrpNYNy2Edmj8dN3q82Epg" name="bool"/>
+  <ownedMember xmi:type="uml:Enumeration" xmi:id="_UrpNYdy2Edmj8dN3q82Epg" name="EmploymentType">
+    <ownedLiteral xmi:id="_UrpNYty2Edmj8dN3q82Epg" name="Regular"/>
+    <ownedLiteral xmi:id="_UrpNY9y2Edmj8dN3q82Epg" name="Contractor"/>
+    <ownedLiteral xmi:id="_UrpNZNy2Edmj8dN3q82Epg" name="FullTime"/>
+    <ownedLiteral xmi:id="_UrpNZdy2Edmj8dN3q82Epg" name="PartTime"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Association" xmi:id="_UrpNZty2Edmj8dN3q82Epg" name="DepartmentOfCompany" memberEnd="_UrpNI9y2Edmj8dN3q82Epg _UrpNKty2Edmj8dN3q82Epg">
+    <ownedEnd xmi:id="_UrpNZ9y2Edmj8dN3q82Epg" name="company" type="_UrpNKdy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNaNy2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNady2Edmj8dN3q82Epg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_UrpNaty2Edmj8dN3q82Epg" name="departement" type="_UrpNHNy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNa9y2Edmj8dN3q82Epg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNbNy2Edmj8dN3q82Epg"/>
+    </ownedEnd>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Association" xmi:id="_UrpNbdy2Edmj8dN3q82Epg" name="GroupOfDepartment" memberEnd="_UrpNJty2Edmj8dN3q82Epg _UrpNVdy2Edmj8dN3q82Epg">
+    <ownedEnd xmi:id="_UrpNbty2Edmj8dN3q82Epg" name="group" type="_UrpNVNy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNb9y2Edmj8dN3q82Epg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNcNy2Edmj8dN3q82Epg"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_UrpNcdy2Edmj8dN3q82Epg" name="department" type="_UrpNHNy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNcty2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrpNc9y2Edmj8dN3q82Epg" value="1"/>
+    </ownedEnd>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Association" xmi:id="_UrpNdNy2Edmj8dN3q82Epg" name="EOM" memberEnd="_UrpNMNy2Edmj8dN3q82Epg _UrpNS9y2Edmj8dN3q82Epg">
+    <ownedEnd xmi:id="_UrpNddy2Edmj8dN3q82Epg" name="employeeOfTheMonth" type="_UrpNPdy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrpNdty2Edmj8dN3q82Epg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrvToNy2Edmj8dN3q82Epg"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_UrvTody2Edmj8dN3q82Epg" name="undefined" type="_UrpNKdy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrvToty2Edmj8dN3q82Epg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrvTo9y2Edmj8dN3q82Epg"/>
+    </ownedEnd>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Association" xmi:id="_UrvTpNy2Edmj8dN3q82Epg" name="EmployedByCompany" memberEnd="_UrpNTty2Edmj8dN3q82Epg _UrpNM9y2Edmj8dN3q82Epg">
+    <ownedEnd xmi:id="_UrvTpdy2Edmj8dN3q82Epg" name="company" type="_UrpNKdy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrvTpty2Edmj8dN3q82Epg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrvTp9y2Edmj8dN3q82Epg"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_UrvTqNy2Edmj8dN3q82Epg" name="undefined" type="_UrpNPdy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrvTqdy2Edmj8dN3q82Epg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrvTqty2Edmj8dN3q82Epg"/>
+    </ownedEnd>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Association" xmi:id="_UrvTq9y2Edmj8dN3q82Epg" name="MemberOfGroup" memberEnd="_UrpNUdy2Edmj8dN3q82Epg _UrpNW9y2Edmj8dN3q82Epg">
+    <ownedEnd xmi:id="_UrvTrNy2Edmj8dN3q82Epg" name="group" type="_UrpNVNy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrvTrdy2Edmj8dN3q82Epg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrvTrty2Edmj8dN3q82Epg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_UrvTr9y2Edmj8dN3q82Epg" name="employees" type="_UrpNPdy2Edmj8dN3q82Epg" isUnique="false" isReadOnly="true">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UrvTsNy2Edmj8dN3q82Epg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UrvTsdy2Edmj8dN3q82Epg"/>
+    </ownedEnd>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvTsty2Edmj8dN3q82Epg" name="FOKUS" classifier="_UrpNKdy2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvTs9y2Edmj8dN3q82Epg" definingFeature="_UrpNI9y2Edmj8dN3q82Epg"/>
+    <slot xmi:id="_UrvTtNy2Edmj8dN3q82Epg" definingFeature="_UrpNTty2Edmj8dN3q82Epg"/>
+    <slot xmi:id="_UrvTtdy2Edmj8dN3q82Epg" definingFeature="_UrpNM9y2Edmj8dN3q82Epg"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvTtty2Edmj8dN3q82Epg" name="MOTION" classifier="_UrpNHNy2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvTt9y2Edmj8dN3q82Epg" definingFeature="_UrpNKty2Edmj8dN3q82Epg"/>
+    <slot xmi:id="_UrvTuNy2Edmj8dN3q82Epg" definingFeature="_UrpNJty2Edmj8dN3q82Epg"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvTudy2Edmj8dN3q82Epg" name="DepartmentOfCompanyInstance" classifier="_UrpNZty2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvTuty2Edmj8dN3q82Epg" definingFeature="_UrpNKty2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvTu9y2Edmj8dN3q82Epg" instance="_UrvTsty2Edmj8dN3q82Epg"/>
+    </slot>
+    <slot xmi:id="_UrvTvNy2Edmj8dN3q82Epg" definingFeature="_UrpNI9y2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvTvdy2Edmj8dN3q82Epg" instance="_UrvTtty2Edmj8dN3q82Epg"/>
+    </slot>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvTvty2Edmj8dN3q82Epg" name="Modelware" classifier="_UrpNVNy2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvTv9y2Edmj8dN3q82Epg" definingFeature="_UrpNVdy2Edmj8dN3q82Epg"/>
+    <slot xmi:id="_UrvTwNy2Edmj8dN3q82Epg" definingFeature="_UrpNUdy2Edmj8dN3q82Epg"/>
+    <slot xmi:id="_UrvTwdy2Edmj8dN3q82Epg" definingFeature="_UrpNW9y2Edmj8dN3q82Epg"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvTwty2Edmj8dN3q82Epg" name="GroupOfDepartmentInstance" classifier="_UrpNbdy2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvTw9y2Edmj8dN3q82Epg" definingFeature="_UrpNVdy2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvTxNy2Edmj8dN3q82Epg" instance="_UrvTtty2Edmj8dN3q82Epg"/>
+    </slot>
+    <slot xmi:id="_UrvTxdy2Edmj8dN3q82Epg" definingFeature="_UrpNJty2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvTxty2Edmj8dN3q82Epg" instance="_UrvTvty2Edmj8dN3q82Epg"/>
+    </slot>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvTx9y2Edmj8dN3q82Epg" name="Tom" classifier="_UrpNPdy2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvTyNy2Edmj8dN3q82Epg" definingFeature="_UrpNW9y2Edmj8dN3q82Epg"/>
+    <slot xmi:id="_UrvTydy2Edmj8dN3q82Epg" definingFeature="_UrpNM9y2Edmj8dN3q82Epg"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvTyty2Edmj8dN3q82Epg" name="EmployeeOfGroupInstance" classifier="_UrvTq9y2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvTy9y2Edmj8dN3q82Epg" definingFeature="_UrpNW9y2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvTzNy2Edmj8dN3q82Epg" instance="_UrvTvty2Edmj8dN3q82Epg"/>
+    </slot>
+    <slot xmi:id="_UrvTzdy2Edmj8dN3q82Epg" definingFeature="_UrpNUdy2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvTzty2Edmj8dN3q82Epg" instance="_UrvTx9y2Edmj8dN3q82Epg"/>
+    </slot>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvTz9y2Edmj8dN3q82Epg" name="Klaus" classifier="_UrpNPdy2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvT0Ny2Edmj8dN3q82Epg" definingFeature="_UrpNW9y2Edmj8dN3q82Epg"/>
+    <slot xmi:id="_UrvT0dy2Edmj8dN3q82Epg" definingFeature="_UrpNM9y2Edmj8dN3q82Epg"/>
+    <slot xmi:id="_UrvT0ty2Edmj8dN3q82Epg" definingFeature="_UrpNTty2Edmj8dN3q82Epg"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvT09y2Edmj8dN3q82Epg" name="EmployeeOfGroupInstance2" classifier="_UrvTq9y2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvT1Ny2Edmj8dN3q82Epg" definingFeature="_UrpNW9y2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvT1dy2Edmj8dN3q82Epg" instance="_UrvTvty2Edmj8dN3q82Epg"/>
+    </slot>
+    <slot xmi:id="_UrvT1ty2Edmj8dN3q82Epg" definingFeature="_UrpNUdy2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvT19y2Edmj8dN3q82Epg" instance="_UrvTz9y2Edmj8dN3q82Epg"/>
+    </slot>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvT2Ny2Edmj8dN3q82Epg" name="Christian" classifier="_UrpNPdy2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvT2dy2Edmj8dN3q82Epg" definingFeature="_UrpNUdy2Edmj8dN3q82Epg"/>
+    <slot xmi:id="_UrvT2ty2Edmj8dN3q82Epg" definingFeature="_UrpNM9y2Edmj8dN3q82Epg"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvT29y2Edmj8dN3q82Epg" name="EmployeeOfGroupInstance3" classifier="_UrvTq9y2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvT3Ny2Edmj8dN3q82Epg" definingFeature="_UrpNW9y2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvT3dy2Edmj8dN3q82Epg" instance="_UrvT2Ny2Edmj8dN3q82Epg"/>
+    </slot>
+    <slot xmi:id="_UrvT3ty2Edmj8dN3q82Epg" definingFeature="_UrpNUdy2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvT39y2Edmj8dN3q82Epg" instance="_UrvTvty2Edmj8dN3q82Epg"/>
+    </slot>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvT4Ny2Edmj8dN3q82Epg" name="undefinedInstance" classifier="_UrvTpNy2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvT4dy2Edmj8dN3q82Epg" definingFeature="_UrpNM9y2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvT4ty2Edmj8dN3q82Epg" instance="_UrvTsty2Edmj8dN3q82Epg"/>
+    </slot>
+    <slot xmi:id="_UrvT49y2Edmj8dN3q82Epg" definingFeature="_UrpNTty2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvT5Ny2Edmj8dN3q82Epg" instance="_UrvTx9y2Edmj8dN3q82Epg"/>
+    </slot>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvT5dy2Edmj8dN3q82Epg" name="undefinedInstance2" classifier="_UrvTpNy2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvT5ty2Edmj8dN3q82Epg" definingFeature="_UrpNM9y2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvT59y2Edmj8dN3q82Epg" instance="_UrvTsty2Edmj8dN3q82Epg"/>
+    </slot>
+    <slot xmi:id="_UrvT6Ny2Edmj8dN3q82Epg" definingFeature="_UrpNTty2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvT6dy2Edmj8dN3q82Epg" instance="_UrvT2Ny2Edmj8dN3q82Epg"/>
+    </slot>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvT6ty2Edmj8dN3q82Epg" name="undefinedInstance3" classifier="_UrvTpNy2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvT69y2Edmj8dN3q82Epg" definingFeature="_UrpNM9y2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvT7Ny2Edmj8dN3q82Epg"/>
+    </slot>
+    <slot xmi:id="_UrvT7dy2Edmj8dN3q82Epg" definingFeature="_UrpNTty2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvT7ty2Edmj8dN3q82Epg" instance="_UrvTz9y2Edmj8dN3q82Epg"/>
+    </slot>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvT79y2Edmj8dN3q82Epg" name="Softeam" classifier="_UrpNKdy2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvT8Ny2Edmj8dN3q82Epg" definingFeature="_UrpNTty2Edmj8dN3q82Epg"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvT8dy2Edmj8dN3q82Epg" name="Christophe" classifier="_UrpNPdy2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvT8ty2Edmj8dN3q82Epg" definingFeature="_UrpNM9y2Edmj8dN3q82Epg"/>
+    <slot xmi:id="_UrvT89y2Edmj8dN3q82Epg" definingFeature="_UrpNUdy2Edmj8dN3q82Epg"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvT9Ny2Edmj8dN3q82Epg" name="EmployedByCompanyInstance" classifier="_UrvTpNy2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvT9dy2Edmj8dN3q82Epg" definingFeature="_UrpNM9y2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvT9ty2Edmj8dN3q82Epg" instance="_UrvT79y2Edmj8dN3q82Epg"/>
+    </slot>
+    <slot xmi:id="_UrvT99y2Edmj8dN3q82Epg" definingFeature="_UrpNTty2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvT-Ny2Edmj8dN3q82Epg" instance="_UrvT8dy2Edmj8dN3q82Epg"/>
+    </slot>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvT-dy2Edmj8dN3q82Epg" name="MemberOfGroupInstance" classifier="_UrvTq9y2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvT-ty2Edmj8dN3q82Epg" definingFeature="_UrpNW9y2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvT-9y2Edmj8dN3q82Epg" instance="_UrvT8dy2Edmj8dN3q82Epg"/>
+    </slot>
+    <slot xmi:id="_UrvT_Ny2Edmj8dN3q82Epg" definingFeature="_UrpNUdy2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvT_dy2Edmj8dN3q82Epg" instance="_UrvTvty2Edmj8dN3q82Epg"/>
+    </slot>
+  </ownedMember>
+  <ownedMember xmi:type="uml:InstanceSpecification" xmi:id="_UrvT_ty2Edmj8dN3q82Epg" name="EmployedByCompanyInstance2" classifier="_UrvTpNy2Edmj8dN3q82Epg">
+    <slot xmi:id="_UrvT_9y2Edmj8dN3q82Epg" definingFeature="_UrpNM9y2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvUANy2Edmj8dN3q82Epg" instance="_UrvTz9y2Edmj8dN3q82Epg"/>
+    </slot>
+    <slot xmi:id="_UrvUAdy2Edmj8dN3q82Epg" definingFeature="_UrpNTty2Edmj8dN3q82Epg">
+      <value xmi:type="uml:InstanceValue" xmi:id="_UrvUAty2Edmj8dN3q82Epg" instance="_UrvTsty2Edmj8dN3q82Epg"/>
+    </slot>
+  </ownedMember>
+</uml:Model>

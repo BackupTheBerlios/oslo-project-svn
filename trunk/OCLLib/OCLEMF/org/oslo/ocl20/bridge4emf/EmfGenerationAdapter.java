@@ -54,8 +54,8 @@ public class EmfGenerationAdapter
 	}
 
 	public String getEnumLiteralReference(EnumLiteral enumLit) {
-		EnumerationType enum = enumLit.getEnumeration();
-		Class enumClass = (Class)enum.getDelegate();
+		EnumerationType enumerationType = enumLit.getEnumeration();
+		Class enumClass = (Class)enumerationType.getDelegate();
 		EEnumLiteralImpl eLit = (EEnumLiteralImpl)enumLit.getDelegate();
 		String enumName = enumClass.getName();
 		return enumName+".get(\""+enumLit.getName()+"\")";

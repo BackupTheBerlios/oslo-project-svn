@@ -111,8 +111,8 @@ public class EnumerationImpl extends OclAnyTypeImpl implements EnumerationType {
 	/** Equals */
 	public boolean equals(Object o) {
 		if (o instanceof EnumerationType) {
-			EnumerationType enum = (EnumerationType)o;
-			return getName().equals(enum.getName());
+			EnumerationType enumerationType = (EnumerationType)o;
+			return getName().equals(enumerationType.getName());
 		}
 		return false;
 	}

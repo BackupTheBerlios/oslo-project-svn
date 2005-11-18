@@ -26,8 +26,8 @@ public class EnumLiteralImpl implements EnumLiteral {
 		return _enum;
 	}
 
-	public void setEnumeration(EnumerationType enum) {
-		_enum = enum;
+	public void setEnumeration(EnumerationType enumerationType) {
+		_enum = enumerationType;
 	}
 
 	String _name = null;

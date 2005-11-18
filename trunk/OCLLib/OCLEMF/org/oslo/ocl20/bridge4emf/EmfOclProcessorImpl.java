@@ -1,6 +1,12 @@
 package org.oslo.ocl20.bridge4emf;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.oslo.ocl20.OclProcessor;
 import org.oslo.ocl20.OclProcessorImpl;
 import org.oslo.ocl20.generation.lib.StdLibGenerationAdapterImpl;
@@ -9,6 +15,7 @@ import org.oslo.ocl20.semantics.analyser.OclSemanticAnalyser;
 import org.oslo.ocl20.semantics.analyser.OclSemanticAnalyserImpl;
 import org.oslo.ocl20.semantics.analyser.OclSemanticAnalyserVisitorImpl;
 import org.oslo.ocl20.semantics.bridge.BridgeFactory;
+import org.oslo.ocl20.semantics.bridge.Environment;
 import org.oslo.ocl20.semantics.model.types.TypeFactory;
 import org.oslo.ocl20.standard.lib.StdLibAdapter;
 import org.oslo.ocl20.standard.lib.StdLibAdapterImpl;
@@ -23,6 +30,7 @@ import org.oslo.ocl20.synthesis.OclCodeGeneratorVisitorImpl;
 import org.oslo.ocl20.synthesis.OclEvaluator;
 import org.oslo.ocl20.synthesis.OclEvaluatorImpl;
 import org.oslo.ocl20.synthesis.OclEvaluatorVisitorImpl;
+import org.oslo.ocl20.synthesis.RuntimeEnvironment;
 
 import uk.ac.kent.cs.kmf.util.ILog;
 
@@ -32,6 +40,9 @@ import uk.ac.kent.cs.kmf.util.ILog;
  */
 public class EmfOclProcessorImpl extends OclProcessorImpl implements OclProcessor {
     EmfBridgeFactory bridgeFactory = new EmfBridgeFactory(this);
+    private static List list_ = new ArrayList();
+	private static List visit_list_ = new ArrayList();
+	
     public BridgeFactory getBridgeFactory() {
         return bridgeFactory;
     }
@@ -100,4 +111,107 @@ public class EmfOclProcessorImpl extends OclProcessorImpl implements OclProcesso
     public EmfOclProcessorImpl(ILog log) {
         super(log);
     }
+
+    public List evaluate_2(String str, Environment env, RuntimeEnvironment renv, ILog log)
+    {
+    	String context;
+    	
+    	int p=str.indexOf("inv:");
+    	context=str.substring(8,p);
+    	context=context.replaceAll(" ","");
+    	
+    	EObject eobject = (EObject)renv.getValue("self");
+    	list_.clear();
+    	visit_list_.clear();
+    	
+    	findInstances(context,eobject);
+    	
+    	List wholelist = new ArrayList();
+    	
+    	
+    	for (int i=0; i<list_.size(); i++)
+    	{
+    		RuntimeEnvironment renv_ = runtimeEnvironment("self", (EObject)list_.get(i));
+    		List list=evaluate(str,env,renv_,log);
+    		if (list!=null){
+    		wholelist.addAll(list);
+    		}
+    	}
+    	return wholelist;
+    }
+    
+    private static void findInstances(String InstanceName, EObject object)
+	{
+		EList elist = object.eClass().getEAllStructuralFeatures();
+		
+		for (int l=0; l<elist.size();l++)
+		{
+			EStructuralFeature sf = (EStructuralFeature)elist.get(l);
+						
+			
+			if (sf.eClass().getName()=="EReference")
+			{
+				
+				//System.out.println(sf);
+				if (sf!=null) {
+					Object obj = object.eGet(sf);
+					
+					if (obj instanceof EList) {
+						EList li_ = (EList)obj;
+						for (int a=0; a<li_.size();a++)
+						{
+							EObject eo = (EObject)li_.get(a);
+							
+							
+							if (eo.eClass().getName().toString().equals(InstanceName))
+							{
+								//System.out.println(eo);
+								if (!(list_.contains(eo)))
+								{
+									list_.add(eo);
+									
+									//System.out.println(list_.size()+":"+eo);
+								}
+						
+							}
+							
+							if (!visit_list_.contains(eo)) {
+								visit_list_.add(eo);
+								findInstances(InstanceName,eo);
+							}
+						 }
+					}
+					
+					if (obj instanceof EObject) {
+						EObject eo = (EObject)obj;
+						
+						if (eo!=null) {
+							
+							if (eo.eClass().getName().toString().equals(InstanceName))
+							{
+								//System.out.println(eo);
+								if (!(list_.contains(eo)))
+								{
+									list_.add(eo);
+									//System.out.println(list_.size()+":"+eo);
+								}																			
+							}
+							
+							if (!visit_list_.contains(eo)) {
+								//System.out.println(eo);
+								visit_list_.add(eo);
+								findInstances(InstanceName,eo);
+								//visit_list_.add(eo);
+							}
+							
+						}
+						
+						visit_list_.add(eo);
+					}
+				}
+			}
+			
+		}
+		
+	}
 }

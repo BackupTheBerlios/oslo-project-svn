@@ -1,10 +1,15 @@
 package org.oslo.ocl20.bridge4emf;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.oslo.ocl20.OclProcessor;
 import org.oslo.ocl20.semantics.bridge.Classifier;
 import org.oslo.ocl20.semantics.bridge.EnumLiteral;
@@ -19,6 +24,7 @@ import org.oslo.ocl20.standard.lib.OclSet;
 import org.oslo.ocl20.standard.lib.OclType;
 import org.oslo.ocl20.standard.lib.OclUndefined;
 import org.oslo.ocl20.synthesis.ModelEvaluationAdapter;
+import org.oslo.ocl20.synthesis.RuntimeEnvironment;
 
 
 /**
@@ -29,6 +35,9 @@ public class EmfEvaluationAdapter
 	implements ModelEvaluationAdapter
 {
 	protected OclProcessor processor;
+	private static List list_ = new ArrayList();
+	private static List visit_list_ = new ArrayList();
+	
 	public EmfEvaluationAdapter(OclProcessor proc) {
 		this.processor = proc;
 	}
@@ -104,7 +113,19 @@ public class EmfEvaluationAdapter
 		return cType.isAssignableFrom(cObj.getInstanceClass());
 	}
 	public OclSet OclType_allInstances(OclType self) {
-		return null;
+		OclModelElementType InstanceName = (OclModelElementType)self.asJavaObject();
+		
+		RuntimeEnvironment renv = this.processor.getRuntimeEnvironment();
+		
+		EObject eobject = (EObject)renv.getValue("self");
+		
+		findInstances(InstanceName.getName(),eobject);
+		
+		OclSet set=this.processor.getStdLibAdapter().Collection( (Collection) list_).asSet();
+		list_.clear();
+		visit_list_.clear();
+		return set;
+		/*return null;*/
 	}
 
 	public OclType OclModelElement_oclType(OclAnyModelElement self) {
@@ -145,5 +166,80 @@ public class EmfEvaluationAdapter
 	public Class getImplClass(Classifier cls) {
 		EClass ecls = (EClass)cls.getDelegate();
 		return ecls.getInstanceClass();
+	}
+	
+	private static void findInstances(String InstanceName, EObject object)
+	{
+		EList elist = object.eClass().getEAllStructuralFeatures();
+		
+		for (int l=0; l<elist.size();l++)
+		{
+			EStructuralFeature sf = (EStructuralFeature)elist.get(l);
+						
+			
+			if (sf.eClass().getName()=="EReference")
+			{
+				
+				//System.out.println(sf);
+				if (sf!=null) {
+					Object obj = object.eGet(sf);
+					
+					if (obj instanceof EList) {
+						EList li_ = (EList)obj;
+						for (int a=0; a<li_.size();a++)
+						{
+							EObject eo = (EObject)li_.get(a);
+							
+							
+							if (eo.eClass().getName().toString().equals(InstanceName))
+							{
+								//System.out.println(eo);
+								if (!(list_.contains(eo)))
+								{
+									list_.add(eo);
+									
+									//System.out.println(list_.size()+":"+eo);
+								}
+						
+							}
+							
+							if (!visit_list_.contains(eo)) {
+								visit_list_.add(eo);
+								findInstances(InstanceName,eo);
+							}
+						 }
+					}
+					
+					if (obj instanceof EObject) {
+						EObject eo = (EObject)obj;
+						
+						if (eo!=null) {
+							
+							if (eo.eClass().getName().toString().equals(InstanceName))
+							{
+								//System.out.println(eo);
+								if (!(list_.contains(eo)))
+								{
+									list_.add(eo);
+									//System.out.println(list_.size()+":"+eo);
+								}																			
+							}
+							
+							if (!visit_list_.contains(eo)) {
+								//System.out.println(eo);
+								visit_list_.add(eo);
+								findInstances(InstanceName,eo);
+								//visit_list_.add(eo);
+							}
+							
+						}
+						
+						visit_list_.add(eo);
+					}
+				}
+			}
+			
+		}
+		
 	}
 }

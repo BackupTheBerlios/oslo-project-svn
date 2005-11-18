@@ -119,8 +119,8 @@ public class EmfBridgeFactory extends BridgeFactoryImpl {
 		return new EnumerationImpl(eenum, super.processor);
 	}
 
-	public EnumLiteral buildEnumLiteral(EEnumLiteral eenumLit, EnumerationType enum) {
-		return new EnumLiteralImpl(eenumLit, enum);
+	public EnumLiteral buildEnumLiteral(EEnumLiteral eenumLit, EnumerationType enumerationType) {
+		return new EnumLiteralImpl(eenumLit, enumerationType);
 	}
 
 	public OclModelElementType buildOclModelElementType(Object o) {

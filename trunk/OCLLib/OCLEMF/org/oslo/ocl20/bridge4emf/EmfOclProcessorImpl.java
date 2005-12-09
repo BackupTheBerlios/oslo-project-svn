@@ -142,6 +142,16 @@ public class EmfOclProcessorImpl extends OclProcessorImpl implements OclProcesso
     
     private static void findInstances(String InstanceName, EObject object)
 	{
+    	if (object.eClass().getName().toString().equals(InstanceName))
+    	{
+    		if (!(list_.contains(object)))
+			{
+				list_.add(object);
+				
+				//System.out.println(list_.size()+":"+eo);
+			}
+    		
+    	}
 		EList elist = object.eClass().getEAllStructuralFeatures();
 		
 		for (int l=0; l<elist.size();l++)

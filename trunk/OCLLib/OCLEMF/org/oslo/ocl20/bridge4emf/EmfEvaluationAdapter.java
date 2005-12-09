@@ -10,6 +10,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.impl.EEnumLiteralImpl;
 import org.oslo.ocl20.OclProcessor;
 import org.oslo.ocl20.semantics.bridge.Classifier;
 import org.oslo.ocl20.semantics.bridge.EnumLiteral;
@@ -129,15 +130,39 @@ public class EmfEvaluationAdapter
 	}
 
 	public OclType OclModelElement_oclType(OclAnyModelElement self) {
-		EClass cObj = ((EObject)self.asJavaObject()).eClass();
+		EObject eObj = (EObject)self.asJavaObject();
+		EClass cObj = eObj.eClass();
 		Classifier type = processor.getBridgeFactory().buildClassifier(cObj);
 		return processor.getStdLibAdapter().Type(type);
 	}
 
 	//--- Enumeration
 	public boolean EnumLiteral_equalTo(OclEnumeration e1, OclAny e2) {
-		return e1.asJavaObject().equals(e2.asJavaObject());
+		
+		Object o1=e1.asJavaObject();
+		Object o2=e2.asJavaObject();
+		
+		if (e1.asJavaObject() instanceof EEnumLiteralImpl)
+		{
+			EEnumLiteralImpl enumliteral = (EEnumLiteralImpl) e1.asJavaObject();
+			o1 = enumliteral.getInstance();
+			
+		}
+		
+		
+		if (e2.asJavaObject() instanceof EEnumLiteralImpl)
+		{
+			EEnumLiteralImpl enumliteral = (EEnumLiteralImpl) e2.asJavaObject();
+			o2 = enumliteral.getInstance();
+			
+			
+		} 
+		
+		return o1.equals(o2);
+		
 	}	
+	
+	
 	public boolean EnumLiteral_oclIsNew(Object o1) {
 		return false;
 	}
@@ -170,6 +195,16 @@ public class EmfEvaluationAdapter
 	
 	private static void findInstances(String InstanceName, EObject object)
 	{
+		if (object.eClass().getName().toString().equals(InstanceName))
+		{
+			if (!(list_.contains(object)))
+			{
+				list_.add(object);
+				
+				//System.out.println(list_.size()+":"+eo);
+			}
+		}
+		
 		EList elist = object.eClass().getEAllStructuralFeatures();
 		
 		for (int l=0; l<elist.size();l++)

@@ -90,6 +90,8 @@ public class EmfBridgeFactory extends BridgeFactoryImpl {
 				return super.processor.getTypeFactory().buildStringType();
 			else if (c == Integer.class || c.getName().equals("int"))
 				return super.processor.getTypeFactory().buildIntegerType();
+			else if (c == Long.class || c.getName().equals("long"))
+				return super.processor.getTypeFactory().buildLongType();
 			else if (c == Boolean.class || c.getName().equals("boolean"))
 				return super.processor.getTypeFactory().buildBooleanType();
 			else if (c == Float.class || c.getName().equals("float"))

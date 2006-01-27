@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_dNqegPMJEdmngNmH9Nkdag" name="testCase3">
+  <ownedMember xmi:type="uml:Package" xmi:id="_dwnakfMJEdmngNmH9Nkdag" name="Package" packageableElement_visibility="public">
+    <ownedMember xmi:type="uml:Class" xmi:id="_d0DwIfMJEdmngNmH9Nkdag" name="Class" isLeaf="false" isAbstract="false" isActive="false"/>
+    <ownedMember xmi:type="uml:Class" xmi:id="_d0WEAPMJEdmngNmH9Nkdag" name="Class1" isLeaf="false" isAbstract="false" isActive="false"/>
+    <ownedMember xmi:type="uml:Class" xmi:id="_d0iRQvMJEdmngNmH9Nkdag" name="Class2" isLeaf="false" isAbstract="false" isActive="false"/>
+    <ownedMember xmi:type="uml:Package" xmi:id="_d0ueg_MJEdmngNmH9Nkdag" name="Package" packageableElement_visibility="public">
+      <ownedMember xmi:type="uml:Class" xmi:id="_d06rwvMJEdmngNmH9Nkdag" name="Class" isLeaf="false" isAbstract="false" isActive="false"/>
+    </ownedMember>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_d335IPMJEdmngNmH9Nkdag" name="Class" isLeaf="false" isAbstract="false" isActive="false"/>
+</uml:Model>

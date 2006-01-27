@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="libs/CUPRuntime.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/KMF_Util.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/KMF_XMI.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/KMFpatterns.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

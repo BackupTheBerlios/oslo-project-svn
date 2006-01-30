@@ -111,8 +111,10 @@ public class OclBooleanImpl extends OclAnyImpl implements OclBoolean {
 	public boolean equals(Object b) {
 		// if this is undef..this equalTo in undef is called
 		if (! (b instanceof OclBoolean) ) return false;
-		if (b instanceof OclUndefined) return ((Boolean)((OclBoolean)b).asJavaObject()).booleanValue();
-		return ((Boolean)((OclBoolean)this).asJavaObject()) == ((Boolean)((OclBoolean)b).asJavaObject());
+// TODO TODOMWA remove old implementation -- not ocl conform		if (b instanceof OclUndefined) return ((Boolean)((OclBoolean)b).asJavaObject()).booleanValue();
+        if (b instanceof OclUndefined) return false;
+// TODO dirty !!! use values
+		return this == b;
 	}
 	public int hashCode() {
 		return this == FALSE ? 0 : 1;

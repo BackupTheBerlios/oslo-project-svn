@@ -174,22 +174,22 @@ extends OclCollectionImpl
 	public OclOrderedSet insertAt(OclInteger index, OclAny object) {
 		OclOrderedSetImpl seq = (OclOrderedSetImpl)this.clone();
 		if (object instanceof OclUndefined) return seq;
-		int i = ((Integer)index.asJavaObject()).intValue();
+		int i = ((OclIntegerImpl)index).int_impl();
 		if (((OclBooleanImpl)includes(object)) != OclBooleanImpl.TRUE) 
-			seq._implementation.add(i,object);
+			seq._implementation.add(i-1,object);
 		return seq;
 	}
 
 	public OclOrderedSet subOrderedSet(OclInteger lower, OclInteger upper) {
-		if (((Integer)lower.asJavaObject()).intValue() < 1) return null;
-		if (((Integer)upper.asJavaObject()).intValue() > ((Integer)this.size().asJavaObject()).intValue() )  return null;
-		int l = ((java.lang.Integer)lower.asJavaObject()).intValue() - 1;
-		int u = ((java.lang.Integer)upper.asJavaObject()).intValue() - 1 +1;
+		if (((OclIntegerImpl)lower).int_impl() < 1) return null;
+		if (((OclIntegerImpl)upper).int_impl() > ((OclIntegerImpl)this.size()).int_impl() )  return null;
+		int l = ((OclIntegerImpl)lower).int_impl() - 1;
+		int u = ((OclIntegerImpl)upper).int_impl() - 1 +1;
 		return adapter.OrderedSet(this.getElementType(), orderedset_impl().subList(l, u));
 	}
 
 	public OclAny at(OclInteger i) {
-		return (OclAny)orderedset_impl().get(((java.lang.Integer)i.asJavaObject()).intValue()-1);
+		return (OclAny)orderedset_impl().get(((OclIntegerImpl)i).int_impl()-1);
 	}
 
 	public OclInteger indexOf(OclAny object) {

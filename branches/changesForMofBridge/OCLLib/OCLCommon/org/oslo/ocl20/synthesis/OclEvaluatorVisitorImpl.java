@@ -937,8 +937,10 @@ public Object visit(PropertyCallExp host, Object data) {
         } else {
             Classifier sourceType = host.getSource().getType();
             OclAny source = (OclAny) host.getSource().accept(this, data);
+//            Classifier c = (Classifier)source.oclType().asJavaObject();
             Classifier c = (Classifier)source.oclType().asJavaObject();
-            prop = c.lookupProperty(prop.getName());
+            String propertyName = prop.getName();
+            prop = c.lookupProperty(propertyName);
             if (prop instanceof DefinedProperty) {
             	RuntimeEnvironment newEnv = env.newEnvironment();
             	newEnv.setValue("self", source);
@@ -987,10 +989,10 @@ public Object visit(PropertyCallExp host, Object data) {
                 // TODO TODOMWA wrapping by property type !!
                      // TODO TODOMWA build type is inefficent
                 if (prop.getType() instanceof CollectionType) {
-                    if (prop.getType() instanceof SetType) {
-                        return this.processor.getStdLibAdapter().Set(((SetType)prop.getType()).getElementType(), result);
-                    } else if (prop.getType() instanceof OrderedSetType) {
+                    if (prop.getType() instanceof OrderedSetType) {
                         return this.processor.getStdLibAdapter().OrderedSet(((OrderedSetType)prop.getType()).getElementType(), result);
+                    } else if (prop.getType() instanceof SetType) {
+                        return this.processor.getStdLibAdapter().Set(((SetType)prop.getType()).getElementType(), result);
                     } else if (prop.getType() instanceof BagType) {
                         return this.processor.getStdLibAdapter().Bag(((BagType)prop.getType()).getElementType(), result);
                     } else if (prop.getType() instanceof SequenceType) {

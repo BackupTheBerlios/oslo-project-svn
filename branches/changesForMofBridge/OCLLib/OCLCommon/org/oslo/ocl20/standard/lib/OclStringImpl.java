@@ -56,7 +56,7 @@ public class OclStringImpl extends OclAnyImpl implements OclString {
 	}
 
 	public boolean equals(Object o) {
-		return (o instanceof OclString) ? ((Boolean)equalTo((OclString)o).asJavaObject()).booleanValue() : false;
+		return (o instanceof OclString) ? ((OclBooleanImpl)equalTo((OclString)o)) == OclBooleanImpl.TRUE : false;
 	}
 
 	public int hashCode() {

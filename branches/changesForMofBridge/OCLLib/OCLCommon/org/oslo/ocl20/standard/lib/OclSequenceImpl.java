@@ -72,16 +72,16 @@ public class OclSequenceImpl extends OclCollectionImpl implements OclSequence {
 	}
 
 	public OclSequence subSequence(OclInteger lower, OclInteger upper) {
-		if (((Integer)lower.asJavaObject()).intValue() < 1) return null;
-		if (((Integer)upper.asJavaObject()).intValue() > ((Integer)this.size().asJavaObject()).intValue() )  return null;
+		if (((OclIntegerImpl)lower).int_impl() < 1) return null;
+		if (((OclIntegerImpl)upper).int_impl() > ((OclIntegerImpl)this.size()).int_impl() )  return null;
 		int l = ((OclIntegerImpl) lower).int_impl() - 1;
 		int u = ((OclIntegerImpl) upper).int_impl() - 1 +1;
 		return adapter.Sequence(this.getElementType(), new Vector(list_impl().subList(l, u)));
 	}
 
 	public Object at(OclInteger i) {
-		if (((Integer)i.asJavaObject()).intValue() < 1) return null;
-		if (((Integer)i.asJavaObject()).intValue() > list_impl().size() )  return null;
+		if (((OclIntegerImpl)i).int_impl() < 1) return null;
+		if (((OclIntegerImpl)i).int_impl() > list_impl().size() )  return null;
 		return list_impl().get(((OclIntegerImpl) i).int_impl() - 1);
 	}
 
@@ -102,7 +102,7 @@ public class OclSequenceImpl extends OclCollectionImpl implements OclSequence {
 	public OclSequence insertAt(OclInteger i, OclAny object) {
 		OclSequenceImpl seq = (OclSequenceImpl)this.clone();
 		if (object instanceof OclUndefined) return seq;
-		seq.list_impl().add( ((Integer)i.asJavaObject()).intValue(), object );
+		seq.list_impl().add( ((OclIntegerImpl)i).int_impl()-1, object );
 		return seq;
 	}
 	

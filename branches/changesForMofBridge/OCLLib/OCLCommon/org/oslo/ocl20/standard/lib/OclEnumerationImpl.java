@@ -36,7 +36,7 @@ public class OclEnumerationImpl extends OclAnyModelElementImpl implements OclEnu
 
     public boolean equals(Object o) {
     	if (o instanceof OclAny)
-        	return ((Boolean)this.equalTo((OclAny)o).asJavaObject()).booleanValue();
+        	return ((OclBooleanImpl)this.equalTo((OclAny)o)) == OclBooleanImpl.TRUE;
         else
         	return false;
     }

@@ -935,12 +935,19 @@ public Object visit(PropertyCallExp host, Object data) {
             // prop);
             // Usual property
         } else {
-            Classifier sourceType = host.getSource().getType();
-            OclAny source = (OclAny) host.getSource().accept(this, data);
-//            Classifier c = (Classifier)source.oclType().asJavaObject();
-            Classifier c = (Classifier)source.oclType().asJavaObject();
-            String propertyName = prop.getName();
-            prop = c.lookupProperty(propertyName);
+            OclAny source = null;
+            boolean isStatic = false; // TODO TODOMWA refactor !!!
+            Object javaSource = null;
+            if (host.getSource() != null) {
+                Classifier sourceType = host.getSource().getType();
+                source = (OclAny) host.getSource().accept(this, data);
+                Classifier c = (Classifier)source.oclType().asJavaObject();
+                String propertyName = prop.getName();
+                prop = c.lookupProperty(propertyName);
+            } else {
+                isStatic = true;
+            }
+            
             if (prop instanceof DefinedProperty) {
             	RuntimeEnvironment newEnv = env.newEnvironment();
             	newEnv.setValue("self", source);
@@ -951,40 +958,30 @@ public Object visit(PropertyCallExp host, Object data) {
             } else {
                 // --- Compute source and getter name ---
             	
-                if (source == null || source instanceof OclUndefined) {
-                    return this.processor.getStdLibAdapter().Undefined();
+                if (!isStatic) {
+                    if (source == null || source instanceof OclUndefined) {
+                        return this.processor.getStdLibAdapter().Undefined();
+                    }
+                    if (source instanceof OclTuple) {
+                        OclString pname = processor.getStdLibAdapter().String(host.getReferredProperty().getName());
+                        return ((OclTuple) source).property(pname);
+                    }
+                    javaSource = ((OclAny) source).asJavaObject();
                 }
-                
-                if (source instanceof OclTuple) {
-                    OclString pname = processor.getStdLibAdapter().String(host.getReferredProperty().getName());
-                    return ((OclTuple) source).property(pname);
-                }
-                Object javaSource = ((OclAny) source).asJavaObject();
                 
                 try {
                     result = processor.getModelEvaluationAdapter().getValueForFeauture(javaSource, host.getReferredProperty());                    
                 } catch (Exception e) {
                     // TODO TODOMWA there is a better way !!
                 }
-                if (result == null) { // back up, do it the old way
-// if (javaSource instanceof EObject)
-// {
-// EObject eo = (EObject)javaSource;
-// EStructuralFeature structuralFeature =
-// eo.eClass().getEStructuralFeature(host.getReferredProperty().getName());
-// result = eo.eGet(structuralFeature);
-//                	
-// } else {
-                
-                
-                    String operName = this.processor.getModelEvaluationAdapter().getGetterName(host.getReferredProperty());
-            	
-                    if (sourceType instanceof OclModelElementType) {
-                        result = invokeModelOperation(sourceType, host.getType(), javaSource, operName, new Vector(), new Vector(), log);                        
-                    } else {
-                        result = invokeOclLibOperation(sourceType, source, operName, new Vector(), new Vector(), log);
-                    }
-            	}
+//                if (result == null) { // back up, do it the old way
+//                    String operName = this.processor.getModelEvaluationAdapter().getGetterName(host.getReferredProperty());
+//                    if (sourceType instanceof OclModelElementType) {
+//                        result = invokeModelOperation(sourceType, host.getType(), javaSource, operName, new Vector(), new Vector(), log);                        
+//                    } else {
+//                        result = invokeOclLibOperation(sourceType, source, operName, new Vector(), new Vector(), log);
+//                    }
+//            	}
 
                 // TODO TODOMWA wrapping by property type !!
                      // TODO TODOMWA build type is inefficent

@@ -1,0 +1,30 @@
+<project name="OSLOTool" default="dist">
+  <path id="compile.classpath">
+    <fileset dir="lib" />
+    <pathelement path="bin" />
+  </path>
+  <target name="compile">
+    <javac srcdir="src" destdir="bin">
+      <classpath refid="compile.classpath" />
+    </javac>
+  </target>
+  <!-- Create binary distribution -->
+  <target name="dist" depends="compile">
+    <delete file="OSLOTool.jar"/>
+  	<delete file="dist/OSLO-Project.zip"/>
+    <mkdir dir="dist" />
+    <jar jarfile="OSLOTool.jar"
+         basedir="bin"
+         manifest="manifest.txt" />
+    <zip destfile="dist/OSLO-Project.zip">
+      <fileset dir="." includes="lib/*" />
+      <fileset dir="." includes="OSLOTool.jar" />
+      <fileset dir="." includes="version.txt" />
+      <fileset dir="." includes="fokuslogo.gif" />
+      <fileset dir="." includes="modelwarelogo.gif" />
+      <fileset dir="." includes="kent.jpg" />	
+      <fileset dir="." includes="license.txt" />
+      <fileset dir="." includes="resource/*" />
+    </zip>
+  </target>
+</project>

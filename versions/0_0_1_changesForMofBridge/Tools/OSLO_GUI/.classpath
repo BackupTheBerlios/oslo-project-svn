@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry sourcepath="ECLIPSE_HOME/plugins/org.eclipse.jdt.source_3.0.0/src/org.junit_3.8.1/junitsrc.zip" kind="var" path="JUNIT_HOME/junit.jar"/>
+	<classpathentry kind="lib" path="lib/activation.jar"/>
+	<classpathentry kind="lib" path="lib/common.jar"/>
+	<classpathentry kind="lib" path="lib/commons-discovery-0.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-httpclient-3.0-rc2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/CUPRuntime.jar"/>
+	<classpathentry kind="lib" path="lib/description.jar"/>
+	<classpathentry kind="lib" path="lib/ecore.jar"/>
+	<classpathentry kind="lib" path="lib/ecore.xmi.jar"/>
+	<classpathentry kind="lib" path="lib/java_cup.jar"/>
+	<classpathentry kind="lib" path="lib/KMF_Util.jar"/>
+	<classpathentry kind="lib" path="lib/KMF_XMI.jar"/>
+	<classpathentry kind="lib" path="lib/KMFpatterns.jar"/>
+	<classpathentry kind="lib" path="lib/OCLCommon.jar"/>
+	<classpathentry kind="lib" path="lib/OCLEMF.jar"/>
+	<classpathentry kind="lib" path="lib/saaj.jar"/>
+	<classpathentry kind="lib" path="lib/uml2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

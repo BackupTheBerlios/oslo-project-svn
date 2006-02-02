@@ -1,0 +1,12 @@
+OSLOTool V1
+Version Information for V0 Beta 9
+
+
+differences between V0 and V1
+- add Error Messages
+- remove tool from memory after exit operation
+- deregister
+- allInstances()
+- fix problems with uml2::Package and Package
+- fix problems with multiple model loading
+- full context functionality is implemented (no wrapper classes)

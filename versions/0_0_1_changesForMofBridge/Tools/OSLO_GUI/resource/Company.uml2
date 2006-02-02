@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_39dccNwUEdm2m-eafN6-mQ" name="company">
+  <ownedMember xmi:type="uml:Class" xmi:id="_4D3mcNwUEdm2m-eafN6-mQ" name="Department" isLeaf="false" isAbstract="false" isActive="false">
+    <ownedAttribute xmi:id="_4GsQ8NwUEdm2m-eafN6-mQ" name="number" visibility="public" isStatic="false" type="_4IoxsNwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4G2B8NwUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4G2B8dwUEdm2m-eafN6-mQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4G2B8twUEdm2m-eafN6-mQ" name="division" visibility="public" isStatic="false" type="_4Ix7oNwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4G2B89wUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4G2B9NwUEdm2m-eafN6-mQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4G2B9dwUEdm2m-eafN6-mQ" name="company" visibility="public" isStatic="false" type="_4HI84NwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4G2B9twUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4G2B99wUEdm2m-eafN6-mQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4G2B-NwUEdm2m-eafN6-mQ" name="group" visibility="public" isStatic="false" type="_4IVPsdwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4G2B-dwUEdm2m-eafN6-mQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4G_y8NwUEdm2m-eafN6-mQ"/>
+    </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_4HI84NwUEdm2m-eafN6-mQ" name="Company" isLeaf="false" isAbstract="false" isActive="false">
+    <ownedAttribute xmi:id="_4HI84dwUEdm2m-eafN6-mQ" name="departement" isStatic="false" type="_4D3mcNwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4HI84twUEdm2m-eafN6-mQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4HI849wUEdm2m-eafN6-mQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4HI85NwUEdm2m-eafN6-mQ" name="name" visibility="public" isStatic="false" type="_4Ix7oNwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4HI85dwUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4HI85twUEdm2m-eafN6-mQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4HI859wUEdm2m-eafN6-mQ" name="employeeOfTheMonth" visibility="public" isStatic="false" type="_4HvZ0NwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4HI86NwUEdm2m-eafN6-mQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4HI86dwUEdm2m-eafN6-mQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4HI86twUEdm2m-eafN6-mQ" name="undefined" isStatic="false" type="_4HvZ0NwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4HI869wUEdm2m-eafN6-mQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4HSt4NwUEdm2m-eafN6-mQ"/>
+    </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_4Hce4NwUEdm2m-eafN6-mQ" name="Person" isLeaf="false" isAbstract="false" isActive="false">
+    <ownedAttribute xmi:id="_4Hce4dwUEdm2m-eafN6-mQ" name="name" visibility="public" isStatic="false" type="_4Ix7oNwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4Hce4twUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4Hce49wUEdm2m-eafN6-mQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4Hce5NwUEdm2m-eafN6-mQ" name="phone" visibility="public" isStatic="false" type="_4Ix7oNwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4Hce5dwUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4Hlo0NwUEdm2m-eafN6-mQ" value="1"/>
+    </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_4HvZ0NwUEdm2m-eafN6-mQ" name="Employee" isLeaf="false" isAbstract="false" isActive="false">
+    <generalization xmi:id="_4H4jwNwUEdm2m-eafN6-mQ" general="_4Hce4NwUEdm2m-eafN6-mQ"/>
+    <ownedAttribute xmi:id="_4H4jwdwUEdm2m-eafN6-mQ" name="title" visibility="public" isStatic="false" type="_4Ix7oNwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4H4jwtwUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4H4jw9wUEdm2m-eafN6-mQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4H4jxNwUEdm2m-eafN6-mQ" name="manager" visibility="public" isStatic="false" type="_4I7soNwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4ICUwNwUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4ICUwdwUEdm2m-eafN6-mQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4ICUwtwUEdm2m-eafN6-mQ" name="location" visibility="public" isStatic="false" type="_4Ix7oNwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4ICUw9wUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4ICUxNwUEdm2m-eafN6-mQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4ICUxdwUEdm2m-eafN6-mQ" name="employmentType" visibility="public" isStatic="false" type="_4JOnkNwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4ICUxtwUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4ICUx9wUEdm2m-eafN6-mQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4IMFwNwUEdm2m-eafN6-mQ" name="undefined" isStatic="false" type="_4HI84NwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4IMFwdwUEdm2m-eafN6-mQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4IMFwtwUEdm2m-eafN6-mQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4IMFw9wUEdm2m-eafN6-mQ" name="company" visibility="public" isStatic="false" type="_4HI84NwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4IMFxNwUEdm2m-eafN6-mQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4IMFxdwUEdm2m-eafN6-mQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4IMFxtwUEdm2m-eafN6-mQ" name="group" visibility="public" isStatic="false" type="_4IVPsdwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4IMFx9wUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4IVPsNwUEdm2m-eafN6-mQ" value="1"/>
+    </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_4IVPsdwUEdm2m-eafN6-mQ" name="Group" isLeaf="false" isAbstract="false" isActive="false">
+    <ownedAttribute xmi:id="_4IVPstwUEdm2m-eafN6-mQ" name="department" isStatic="false" type="_4D3mcNwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4IVPs9wUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4IVPtNwUEdm2m-eafN6-mQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4IVPtdwUEdm2m-eafN6-mQ" name="id" visibility="public" isStatic="false" type="_4Ix7oNwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4IVPttwUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4IVPt9wUEdm2m-eafN6-mQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4IVPuNwUEdm2m-eafN6-mQ" name="employees" isStatic="false" type="_4HvZ0NwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4IVPudwUEdm2m-eafN6-mQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4IfAsNwUEdm2m-eafN6-mQ"/>
+    </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_4IoxsNwUEdm2m-eafN6-mQ" name="int" isLeaf="false" isAbstract="false"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_4Ix7oNwUEdm2m-eafN6-mQ" name="String" isLeaf="false" isAbstract="false"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_4I7soNwUEdm2m-eafN6-mQ" name="bool" isLeaf="false" isAbstract="false"/>
+  <ownedMember xmi:type="uml:Enumeration" xmi:id="_4JOnkNwUEdm2m-eafN6-mQ" name="EmploymentType" isLeaf="false" isAbstract="false">
+    <ownedLiteral xmi:id="_4JYYkNwUEdm2m-eafN6-mQ" name="Regular"/>
+    <ownedLiteral xmi:id="_4JYYkdwUEdm2m-eafN6-mQ" name="Contractor"/>
+    <ownedLiteral xmi:id="_4JYYktwUEdm2m-eafN6-mQ" name="FullTime"/>
+    <ownedLiteral xmi:id="_4JhigNwUEdm2m-eafN6-mQ" name="PartTime"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Association" xmi:id="_4JrTgNwUEdm2m-eafN6-mQ" name="undefined" memberEnd="_4G2B9dwUEdm2m-eafN6-mQ _4HI84dwUEdm2m-eafN6-mQ">
+    <ownedEnd xmi:id="_4G2B9dwUEdm2m-eafN6-mQ" name="company" visibility="public" isStatic="false" type="_4HI84NwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4G2B9twUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4G2B99wUEdm2m-eafN6-mQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_4HI84dwUEdm2m-eafN6-mQ" name="departement" isStatic="false" type="_4D3mcNwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4HI84twUEdm2m-eafN6-mQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4HI849wUEdm2m-eafN6-mQ"/>
+    </ownedEnd>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Association" xmi:id="_4J1EgNwUEdm2m-eafN6-mQ" name="undefined" memberEnd="_4G2B-NwUEdm2m-eafN6-mQ _4IVPstwUEdm2m-eafN6-mQ">
+    <ownedEnd xmi:id="_4G2B-NwUEdm2m-eafN6-mQ" name="group" visibility="public" isStatic="false" type="_4IVPsdwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4G2B-dwUEdm2m-eafN6-mQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4G_y8NwUEdm2m-eafN6-mQ"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_4IVPstwUEdm2m-eafN6-mQ" name="department" isStatic="false" type="_4D3mcNwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4IVPs9wUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4IVPtNwUEdm2m-eafN6-mQ" value="1"/>
+    </ownedEnd>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Association" xmi:id="_4KH_cNwUEdm2m-eafN6-mQ" name="undefined" memberEnd="_4HI859wUEdm2m-eafN6-mQ _4IMFwNwUEdm2m-eafN6-mQ">
+    <ownedEnd xmi:id="_4HI859wUEdm2m-eafN6-mQ" name="employeeOfTheMonth" visibility="public" isStatic="false" type="_4HvZ0NwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4HI86NwUEdm2m-eafN6-mQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4HI86dwUEdm2m-eafN6-mQ"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_4IMFwNwUEdm2m-eafN6-mQ" name="undefined" isStatic="false" type="_4HI84NwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4IMFwdwUEdm2m-eafN6-mQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4IMFwtwUEdm2m-eafN6-mQ"/>
+    </ownedEnd>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Association" xmi:id="_4KRJYNwUEdm2m-eafN6-mQ" name="undefined" memberEnd="_4IMFw9wUEdm2m-eafN6-mQ _4HI86twUEdm2m-eafN6-mQ">
+    <ownedEnd xmi:id="_4IMFw9wUEdm2m-eafN6-mQ" name="company" visibility="public" isStatic="false" type="_4HI84NwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4IMFxNwUEdm2m-eafN6-mQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4IMFxdwUEdm2m-eafN6-mQ"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_4HI86twUEdm2m-eafN6-mQ" name="undefined" isStatic="false" type="_4HvZ0NwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4HI869wUEdm2m-eafN6-mQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4HSt4NwUEdm2m-eafN6-mQ"/>
+    </ownedEnd>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Association" xmi:id="_4Ka6YNwUEdm2m-eafN6-mQ" name="undefined" memberEnd="_4IMFxtwUEdm2m-eafN6-mQ _4IVPuNwUEdm2m-eafN6-mQ">
+    <ownedEnd xmi:id="_4IMFxtwUEdm2m-eafN6-mQ" name="group" visibility="public" isStatic="false" type="_4IVPsdwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4IMFx9wUEdm2m-eafN6-mQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4IVPsNwUEdm2m-eafN6-mQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_4IVPuNwUEdm2m-eafN6-mQ" name="employees" isStatic="false" type="_4HvZ0NwUEdm2m-eafN6-mQ" isOrdered="false" isUnique="false" isReadOnly="true" isDerived="false" aggregation="none">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4IVPudwUEdm2m-eafN6-mQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4IfAsNwUEdm2m-eafN6-mQ"/>
+    </ownedEnd>
+  </ownedMember>
+</uml:Model>

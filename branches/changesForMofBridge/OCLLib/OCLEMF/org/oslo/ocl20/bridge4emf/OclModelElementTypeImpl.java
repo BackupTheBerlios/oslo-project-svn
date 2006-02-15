@@ -19,7 +19,6 @@ import org.oslo.ocl20.semantics.bridge.Namespace;
 import org.oslo.ocl20.semantics.bridge.OclModelElementType;
 import org.oslo.ocl20.semantics.bridge.Operation;
 import org.oslo.ocl20.semantics.bridge.Property;
-import org.oslo.ocl20.semantics.model.types.OclAnyType;
 import org.oslo.ocl20.standard.types.OclAnyTypeImpl;
 
 

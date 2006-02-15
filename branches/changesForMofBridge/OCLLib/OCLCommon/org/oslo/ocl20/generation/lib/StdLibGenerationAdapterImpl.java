@@ -8,13 +8,11 @@ package org.oslo.ocl20.generation.lib;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
 import org.oslo.ocl20.OclProcessor;
 import org.oslo.ocl20.semantics.bridge.Classifier;
-import org.oslo.ocl20.semantics.model.expressions.VariableDeclaration;
 import org.oslo.ocl20.semantics.model.types.BagType;
 import org.oslo.ocl20.semantics.model.types.BooleanType;
 import org.oslo.ocl20.semantics.model.types.CollectionType;
@@ -261,6 +259,17 @@ implements StdLibAdapter
 	public OclTuple Tuple(TupleType tT, java.lang.String tup, boolean newVariable) {
 		return new OclTupleImpl(tT, tup, this, newVariable);
 	}
+    
+    public OclTuple Tuple(TupleType tT, Object tuple) {
+        if (tuple instanceof java.util.Map) {
+            return Tuple(tT, (java.util.Map) tuple);
+        } else if (tuple instanceof OclAny[]) {
+            return Tuple(tT, (OclAny[]) tuple);
+        } else {
+            throw new RuntimeException("Only objects of type java.util.Map or OclAny[] supported for the creation of tuples."); 
+        }
+    }
+
 
 	//public java.util.Map impl(OclTuple t) {
 	//	throw new UnsupportedOperationException();

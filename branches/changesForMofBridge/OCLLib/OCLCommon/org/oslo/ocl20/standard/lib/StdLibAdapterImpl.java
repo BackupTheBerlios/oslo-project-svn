@@ -194,6 +194,17 @@ implements StdLibAdapter
 	public OclTuple Tuple(TupleType eT, OclAny[] arr) {
 		return new OclTupleImpl(eT, arr, this);
 	}
+    
+    public OclTuple Tuple(TupleType tT, Object tuple) {
+        if (tuple instanceof java.util.Map) {
+            return Tuple(tT, (java.util.Map) tuple);
+        } else if (tuple instanceof OclAny[]) {
+            return Tuple(tT, (OclAny[]) tuple);
+        } else {
+            throw new RuntimeException("Only objects of type java.util.Map or OclAny[] supported for the creation of tuples."); 
+        }
+    }
+
 
 	//public java.util.Map impl(OclTuple t) {
 	//	return (java.util.Map)t.asJavaObject();

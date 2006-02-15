@@ -1,15 +1,23 @@
 package org.oslo.ocl20.standard.lib;
 
+import org.oslo.ocl20.semantics.bridge.Classifier;
+
 public class OclIntegerImpl extends OclRealImpl implements OclInteger {
-	public OclIntegerImpl(int i, StdLibAdapter adapter) {
+    int _int_impl;
+
+    public OclIntegerImpl(int i, StdLibAdapter adapter) {
 		super(i,adapter);
 		_int_impl = i;
 	}
 
-	int _int_impl;
 	public int int_impl() {
 		return _int_impl;
 	}
+    
+    public OclType oclType() {
+        Classifier type = adapter.getProcessor().getTypeFactory().buildIntegerType();
+        return adapter.Type(type);
+    }
 
 	public OclBoolean equalTo(OclInteger i2) {
 		return super.equalTo(i2);

@@ -31,15 +31,15 @@ public class OclBagImpl
 	}
 
 	public OclBoolean equalTo(OclBag bag2) {
-	    Collection this_bag = (Collection)this.asJavaObject();
-	    Collection b2 = (Collection)bag2.asJavaObject();
+	    Collection this_bag = (Collection)this.implementation();
+	    Collection b2 = (Collection)((OclBagImpl)bag2).implementation();
 		if (this_bag.size() != b2.size() )
 			return adapter.Boolean(false);
 		Collection b = implementation();
 		Iterator it = b.iterator();
 		while (it.hasNext()) {
 			OclAny ob = (OclAny) it.next();
-			if (((OclBooleanImpl)count(ob).equalTo(bag2.count(ob))) == OclBooleanImpl.TRUE)
+			if (((OclBooleanImpl)count(ob).equalTo(bag2.count(ob))) != OclBooleanImpl.TRUE)
 				return adapter.Boolean(false);
 		}
 		return adapter.Boolean(true);

@@ -85,8 +85,8 @@ extends OclCollectionImpl
 
 	public OclSet intersection(OclSet set2) {
 		OclSet s =  adapter.Set(this.getElementType() );
-		List s1 = (List)this.asJavaObject();
-		Set s2 = (Set)set2.asJavaObject();
+		List s1 = (List)this.implementation();
+		Set s2 = (Set)((OclSetImpl)set2).implementation();
 		Iterator i1 = s1.iterator();
 		while (i1.hasNext()) {
 			OclAny o = (OclAny) i1.next();
@@ -112,8 +112,14 @@ extends OclCollectionImpl
 
 	public OclSet subtract(OclSet set2) {
 		OclSet s =  adapter.Set(this.getElementType());
-		List set = (List)this.asJavaObject();
-		Set s2 = (Set)set2.asJavaObject();
+		List set = (List)this.implementation();
+        // TODO TODOMWA remove dirty hack !!
+		Collection s2 = null;
+        if (set2 instanceof OclSetImpl) {
+            s2 = ((OclSetImpl)set2).implementation();            
+        } else {
+            s2 = ((OclOrderedSetImpl)set2).implementation();            
+        }
 		Iterator i1 = set.iterator();
 		while (i1.hasNext()) {
 		    OclAny o = (OclAny) i1.next();
@@ -125,8 +131,14 @@ extends OclCollectionImpl
 
 	public OclSet symmetricDifference(OclSet set2) {
 		OclSet s = adapter.Set(this.getElementType());
-		List s1 = (List)this.asJavaObject();
-		Set s2 = (Set)set2.asJavaObject();
+		List s1 = (List)this.implementation();
+        // TODO TODOMWA remove dirty hack !!
+        Collection s2 = null;
+        if (set2 instanceof OclSetImpl) {
+            s2 = ((OclSetImpl)set2).implementation();            
+        } else {
+            s2 = ((OclOrderedSetImpl)set2).implementation();            
+        }
 		Iterator i1 = s1.iterator();
 		while (i1.hasNext()) {
 		    OclAny o = (OclAny) i1.next();

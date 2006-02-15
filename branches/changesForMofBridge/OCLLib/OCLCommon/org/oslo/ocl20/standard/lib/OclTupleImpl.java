@@ -57,7 +57,7 @@ public class OclTupleImpl extends OclAnyImpl implements OclTuple {
 
 	//--- IOclTuple ---
 	public OclAny property(OclString s) {
-		String key = (String)s.asJavaObject();
+		String key = ((OclStringImpl)s).implementation();
 		OclAny o = (OclAny)_implementation.get(key);
 		if (o == null)
 			//return adapter.Undefined("Tuple doesn't contain element - "+key,null);
@@ -70,7 +70,7 @@ public class OclTupleImpl extends OclAnyImpl implements OclTuple {
 	}
 
 	public void setProperty(OclString name, Object value) {
-		String key = (String)name.asJavaObject();
+		String key = ((OclStringImpl)name).implementation();
 		_implementation.put(key, value);
 	}
 

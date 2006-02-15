@@ -55,6 +55,7 @@ public interface StdLibAdapter {
 	
 	OclTuple Tuple(TupleType tT, java.util.Map m);
 	OclTuple Tuple(TupleType tT, OclAny[] arr);
+    OclTuple Tuple(TupleType tT, Object tuple);
 	//OclTuple Tuple(Classifier tT, Classifier[] types, String[] keys, OclAny[] arr);
 	//java.util.Map impl(OclTuple t);
 	

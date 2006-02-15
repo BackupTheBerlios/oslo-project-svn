@@ -13,4 +13,5 @@ public interface OclInteger
     OclInteger mod(OclInteger i2);
     OclInteger max(OclInteger i2);
     OclInteger min(OclInteger i2);
+    
 }

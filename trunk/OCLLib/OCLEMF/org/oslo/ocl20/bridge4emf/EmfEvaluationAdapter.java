@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -103,28 +104,72 @@ public class EmfEvaluationAdapter
 	public Object OclModelElement_oclAsType(OclAny o1, OclType o2) {
 		return o1;
 	}
+	
 	public boolean OclModelElement_oclIsTypeOf(OclAny o1, OclType type) {
+		
+		
+		// [HEINI]
 		EClass cObj = ((EObject)o1.asJavaObject()).eClass();
-		Class cType = (Class)((OclModelElementType)type.asJavaObject()).getDelegate();
-		return cObj.getInstanceClass() == cType;
+		
+		EClass eclass = (EClass) ((OclModelElementTypeImpl)type.asJavaObject()).getImplementation() ;
+		
+		//Class cType = (Class)((OclModelElementType)type.asJavaObject()).getDelegate();
+		
+		//return cObj.getInstanceClass() == cType;
+		return cObj.getName().equals(eclass.getName());
 	}
+	
 	public boolean OclModelElement_oclIsKindOf(OclAny o1, OclType type) {
+		
+		// [HEINI]
 		EClass cObj = ((EObject)o1.asJavaObject()).eClass();
-		Class cType = (Class)((OclModelElementType)type.asJavaObject()).getDelegate();
-		return cType.isAssignableFrom(cObj.getInstanceClass());
+		
+		EClass eclass = (EClass) ((OclModelElementTypeImpl)type.asJavaObject()).getImplementation();
+				
+	//	Class cType = (Class)((OclModelElementType)type.asJavaObject()).getDelegate();
+	//	return cType.isAssignableFrom(cObj.getInstanceClass());
+		return eclass.isSuperTypeOf(cObj);
 	}
+	
 	public OclSet OclType_allInstances(OclType self) {
+		
+		List InstancesList = new ArrayList(); 
 		OclModelElementType InstanceName = (OclModelElementType)self.asJavaObject();
+		EClass InstanceTyp = (EClass) ((OclModelElementTypeImpl)self.asJavaObject()).getImplementation();
+		
+		
+		// [HEINI]
 		
 		RuntimeEnvironment renv = this.processor.getRuntimeEnvironment();
 		
 		EObject eobject = (EObject)renv.getValue("self");
+		TreeIterator iter = eobject.eResource().getAllContents();
+		while (iter.hasNext())
+		{
+			EObject content = (EObject)iter.next();
+			if (content.getClass().getName().equals(InstanceTyp.getName()))
+			{
+				if (!(InstancesList.contains(content)))
+				{
+					InstancesList.add(content);
+					
+				}
+			}
+			
+			if (InstanceTyp.isSuperTypeOf(content.eClass()))
+			{
+				if (!(InstancesList.contains(content)))
+				{
+					InstancesList.add(content);
+					
+				}
+			}
+		}
+		//findInstances(InstanceName.getName(),eobject);
 		
-		findInstances(InstanceName.getName(),eobject);
-		
-		OclSet set=this.processor.getStdLibAdapter().Collection( (Collection) list_).asSet();
-		list_.clear();
-		visit_list_.clear();
+		OclSet set=this.processor.getStdLibAdapter().Collection( (Collection) InstancesList).asSet();
+		//list_.clear();
+		//visit_list_.clear();
 		return set;
 		/*return null;*/
 	}
@@ -132,6 +177,7 @@ public class EmfEvaluationAdapter
 	public OclType OclModelElement_oclType(OclAnyModelElement self) {
 		EObject eObj = (EObject)self.asJavaObject();
 		EClass cObj = eObj.eClass();
+		
 		Classifier type = processor.getBridgeFactory().buildClassifier(cObj);
 		return processor.getStdLibAdapter().Type(type);
 	}

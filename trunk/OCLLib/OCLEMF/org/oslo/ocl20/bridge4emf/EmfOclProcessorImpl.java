@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -115,23 +117,52 @@ public class EmfOclProcessorImpl extends OclProcessorImpl implements OclProcesso
     public List evaluate_2(String str, Environment env, RuntimeEnvironment renv, ILog log)
     {
     	String context;
-    	
+    	List InstancesList = new ArrayList();
     	int p=str.indexOf("inv:");
     	context=str.substring(8,p);
     	context=context.replaceAll(" ","");
     	
     	EObject eobject = (EObject)renv.getValue("self");
-    	list_.clear();
-    	visit_list_.clear();
+    	    	
+		TreeIterator iter = eobject.eResource().getAllContents();
+		while (iter.hasNext())
+		{
+			EObject content = (EObject)iter.next();
+			if (content.eClass().getName().toString().equals(context))
+			{
+				if (!(InstancesList.contains(content)))
+				{
+					InstancesList.add(content);
+					
+				}
+			}
+			
+			List supertypes = content.eClass().getEAllSuperTypes();
+			
+			for (int s=0; s<supertypes.size(); s++)
+			{
+				EClass eclass = (EClass)supertypes.get(s);
+				if (eclass.getName().toString().equals(context))
+				{
+					if (!(InstancesList.contains(content)))
+					{
+						InstancesList.add(content);
+						
+					}
+				}
+			}
+			
+		}
+    	//list_.clear();
+    	//visit_list_.clear();
     	
-    	findInstances(context,eobject);
+    //	findInstances(context,eobject);
     	
     	List wholelist = new ArrayList();
     	
-    	
-    	for (int i=0; i<list_.size(); i++)
+    	for (int i=0; i<InstancesList.size(); i++)
     	{
-    		RuntimeEnvironment renv_ = runtimeEnvironment("self", (EObject)list_.get(i));
+    		RuntimeEnvironment renv_ = runtimeEnvironment("self", (EObject)InstancesList.get(i));
     		List list=evaluate(str,env,renv_,log);
     		if (list!=null){
     		wholelist.addAll(list);

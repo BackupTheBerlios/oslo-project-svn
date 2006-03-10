@@ -261,7 +261,12 @@ public class OclSemanticAnalyserVisitorImpl extends VisitorImpl implements astVi
         TypeLiteralExp tle = (TypeLiteralExp)host.getType().accept(this,data);
         Classifier contextCls = tle.getLiteralType();
         semContext.setReferredClassifier(contextCls);
-        newEnv = env.addVariableDeclaration("self", contextCls, Boolean.TRUE);
+        // TODO TODOMWA make beauty
+        
+        
+//old        newEnv = env.addVariableDeclaration("self", contextCls, Boolean.TRUE);
+        newEnv = contextCls.getEnvironmentWithParents().addVariableDeclaration("self", contextCls, Boolean.TRUE);
+        
         /*
         semContext.setReferredNamespace((Namespace) env.lookupPathName(host.getPathName()));
         //--- Search for pathName classifier ---

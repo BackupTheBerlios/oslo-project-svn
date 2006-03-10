@@ -190,9 +190,9 @@ implements
 	/** Get the current environment without parent */ 
 	public Environment getEnvironmentWithoutParents() {
 		Environment env = this.processor.getBridgeFactory().buildEnvironment();
-		env.addNamespace(this);
-		env.setParent(null);
-		return env;
+		Environment result = env.addNamespace(this);
+		result.setParent(null);
+		return result;
 	}
 
 	/** Get the current environment with parent */ 

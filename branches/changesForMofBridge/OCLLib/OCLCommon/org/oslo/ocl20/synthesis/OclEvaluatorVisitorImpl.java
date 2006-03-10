@@ -85,15 +85,19 @@ import org.oslo.ocl20.semantics.model.types.VoidType;
 import org.oslo.ocl20.standard.lib.OclAny;
 import org.oslo.ocl20.standard.lib.OclBag;
 import org.oslo.ocl20.standard.lib.OclBoolean;
+import org.oslo.ocl20.standard.lib.OclBooleanImpl;
 import org.oslo.ocl20.standard.lib.OclCollection;
+import org.oslo.ocl20.standard.lib.OclCollectionImpl;
 import org.oslo.ocl20.standard.lib.OclEnumeration;
 import org.oslo.ocl20.standard.lib.OclInteger;
+import org.oslo.ocl20.standard.lib.OclIntegerImpl;
 import org.oslo.ocl20.standard.lib.OclOrderedSet;
 import org.oslo.ocl20.standard.lib.OclReal;
 import org.oslo.ocl20.standard.lib.OclSequence;
 import org.oslo.ocl20.standard.lib.OclSet;
 import org.oslo.ocl20.standard.lib.OclString;
 import org.oslo.ocl20.standard.lib.OclTuple;
+import org.oslo.ocl20.standard.lib.OclType;
 import org.oslo.ocl20.standard.lib.OclUndefined;
 import org.oslo.ocl20.standard.types.BagTypeImpl;
 import org.oslo.ocl20.standard.types.BooleanTypeImpl;
@@ -525,7 +529,7 @@ public class OclEvaluatorVisitorImpl extends SemanticsVisitor$Class implements S
                 if (firstType instanceof IntegerType && lastType instanceof IntegerType) {
                     OclInteger firstValue = (OclInteger) first.accept(this, data);
                     OclInteger lastValue = (OclInteger) last.accept(this, data);
-                    for (int j = ((Integer)firstValue.asJavaObject()).intValue(); j <= ((Integer)lastValue.asJavaObject()).intValue(); j++) {
+                    for (int j = ((OclIntegerImpl)firstValue).int_impl(); j <= ((OclIntegerImpl)lastValue).int_impl(); j++) {
                         OclInteger value = this.processor.getStdLibAdapter().Integer(j);
                         if (kind == CollectionKind$Class.BAG) {
                             result = ((OclBag) result).including(value);
@@ -1059,7 +1063,7 @@ public Object visit(PropertyCallExp host, Object data) {
         if (sourceValue instanceof java.util.Collection) {
             i = ((java.util.Collection) sourceValue).iterator();
         } else if (sourceValue instanceof OclCollection) {
-            i = ((java.util.Collection) ((OclCollection) sourceValue).asJavaObject()).iterator();
+            i = ((java.util.Collection) ((OclCollectionImpl) sourceValue).getImplementation()).iterator();
         } else {
             return null;
         }
@@ -1117,7 +1121,7 @@ public Object visit(PropertyCallExp host, Object data) {
             if (result instanceof OclUndefined) {
             	this.processor.getStdLibAdapter().Boolean(false);
             } else {
-            if (((Boolean)result.asJavaObject()).booleanValue())
+            if ((OclBooleanImpl)result == OclBooleanImpl.TRUE)
                 break;
             }
         }
@@ -1168,7 +1172,7 @@ public Object visit(PropertyCallExp host, Object data) {
             Object bodyValue = body.accept(this, newData);
             //--- Break loop
             result = (OclBoolean) bodyValue;
-            if (!((Boolean)result.asJavaObject()).booleanValue())
+            if (result != OclBooleanImpl.TRUE)
                 break;
         }
         return result;
@@ -1220,7 +1224,7 @@ public Object visit(PropertyCallExp host, Object data) {
             //--- Compute result and break loop
             OclBoolean found = tempSet.includes(bodyValue);
             tempSet = tempSet.including(bodyValue);
-            if (((Boolean)found.asJavaObject()).booleanValue()) {
+            if (found == OclBooleanImpl.TRUE) {
                 result = this.processor.getStdLibAdapter().Boolean(false);
                 break;
             }
@@ -1271,8 +1275,10 @@ public Object visit(PropertyCallExp host, Object data) {
             newEnv.setValue(it1Name, it1Value);
             //--- Generate body ---
             Object bodyValue = body.accept(this, newData);
-            Boolean bv = (Boolean) ((OclBoolean) bodyValue).asJavaObject();
-            if (bv != null && bv.booleanValue()) {
+//            Boolean bv = (Boolean) ((OclBoolean) bodyValue).asJavaObject();
+//            if (bv != null && bv.booleanValue()) {
+            if ( !(bodyValue instanceof OclUndefined) && ((OclBoolean)bodyValue) == OclBooleanImpl.TRUE) {
+            
                 result = it1Value;
                 break;
             }
@@ -1325,7 +1331,7 @@ public Object visit(PropertyCallExp host, Object data) {
             //--- Generate body ---
             Object bodyValue = body.accept(this, newData);
             //--- Compute result and break loop
-            if (((Boolean)((OclBoolean) bodyValue).asJavaObject()).booleanValue()) {
+            if ( (OclBoolean)bodyValue == OclBooleanImpl.TRUE) {
                 counter++;
                 if (counter == 1)
                     result = this.processor.getStdLibAdapter().Boolean(true);
@@ -1433,12 +1439,12 @@ public Object visit(PropertyCallExp host, Object data) {
                 //do not include
             } else {
                 //--- Compute result 
-                if (((Boolean) bodyValue.asJavaObject()).booleanValue()) {
+                if (bodyValue == OclBooleanImpl.TRUE) {
                     if (hostType instanceof BagType) {
                         result = ((OclBag) result).including(it1Value);
                     } else if (hostType instanceof OrderedSetType) {
                         // why test for contains ?
-                        if (! ((Boolean)result.includes(it1Value).asJavaObject()).booleanValue() ) {
+                        if (((OclBoolean)result.includes(it1Value)) == OclBooleanImpl.TRUE ) {
                             result = ((OclOrderedSet) result).including(it1Value);
                         }
                     } else if (hostType instanceof SetType) {
@@ -1496,7 +1502,7 @@ public Object visit(PropertyCallExp host, Object data) {
             //--- Generate body ---
             Object bodyValue = body.accept(this, newData);
             //--- Compute result ---
-            if (!((Boolean)((OclBoolean) bodyValue).asJavaObject()).booleanValue()) {
+            if (((OclBoolean)bodyValue) != OclBooleanImpl.TRUE) {
                 if (hostType instanceof BagType) {
                     result = ((OclBag) result).including(it1Value);
                 } else if (hostType instanceof OrderedSetType) {
@@ -1655,7 +1661,7 @@ public Object visit(PropertyCallExp host, Object data) {
                 if (obj instanceof Boolean)
                     gt = ((Boolean) obj).booleanValue();
                 if (obj instanceof OclBoolean && !(obj instanceof OclUndefined))
-                    gt = ((Boolean) ((OclBoolean) obj).asJavaObject()).booleanValue();
+                    gt = ((OclBoolean) obj) == OclBooleanImpl.TRUE;
                 if (gt) {
                     Object temp = k1;
                     bodyList.set(k, k2);
@@ -1850,7 +1856,7 @@ public Object visit(PropertyCallExp host, Object data) {
         if (condition instanceof OclUndefined)
             return condition;
         if (condition instanceof OclBoolean) {
-            if (((Boolean) ((OclBoolean) condition).asJavaObject()).booleanValue()) {
+            if (((OclBooleanImpl)condition) == OclBooleanImpl.TRUE) {
                 result = host.getThenExpression().accept(this, data);
             } else {
                 result = host.getElseExpression().accept(this, data);
@@ -2062,7 +2068,40 @@ public Object visit(PropertyCallExp host, Object data) {
                 //--- Compute the type ---
                 OclExpression exp = con.getBodyExpression();
                 if (exp != null) {
-                    result.put(name,exp.accept(this, data));
+                	RuntimeEnvironment renv = (RuntimeEnvironment)((Map)data).get("env");
+                	boolean selfIsDefined = true;
+                	Object initialSelf = renv.getValue("self");
+                	if (initialSelf instanceof OclAny) {
+                		// TODO TODOMWA bool value
+                    	if ( processor.getStdLibAdapter().Undefined().oclIsUndefined() == OclBooleanImpl.TRUE ) {
+                    		selfIsDefined = false;
+                    	}
+                	} else if (initialSelf instanceof OclCollection) {
+                		// TODO TODOMWA bool value
+                    	if ( processor.getStdLibAdapter().Undefined().oclIsUndefined() == OclBooleanImpl.TRUE ) {
+                    		selfIsDefined = false;
+                    	}
+                	}
+                	
+                	
+                	if (((ClassifierContextDecl)con.getContext()).getReferredClassifier().conformsTo(processor.getTypeFactory().buildVoidType()).booleanValue() || selfIsDefined ) {
+                		result.put(name,exp.accept(this, data));
+                	} else {
+	                	// TODO TODOMWA make better ... checks !!
+	                	OclSet allAsSet = processor.getModelEvaluationAdapter().OclType_allInstances(processor.getStdLibAdapter().Type(  ((ClassifierContextDecl)con.getContext()).getReferredClassifier()));
+	                	OclSequence allAsSequence = allAsSet.asSequence();
+	//                	this.r
+	                	// TODO TODOMWa remove cast to impl
+	                	int size = ((OclIntegerImpl)allAsSequence.size()).int_impl();
+	                	OclBoolean retValue = processor.getStdLibAdapter().Boolean(true);
+	                	for (int i = 0; i < size; i++) {
+	                    	renv.setValue("self", allAsSequence.at(processor.getStdLibAdapter().Integer(i+1)));
+	                    	// TODO TODOMWA correct
+	                    	OclBoolean tempValue = (OclBoolean)exp.accept(this, data);
+	                    	retValue = retValue.and(tempValue);
+						}
+	                    result.put(name,retValue);
+                	}                	
                 } else {
                     result.put(name,processor.getStdLibAdapter().Undefined());
                 }

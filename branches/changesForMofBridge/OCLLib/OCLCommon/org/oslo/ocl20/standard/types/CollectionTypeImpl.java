@@ -180,8 +180,8 @@ public class CollectionTypeImpl extends OclAnyTypeImpl implements CollectionType
 		return OclCollection.class;
 	}
 	
-	Classifier baseElementType(Classifier t) {
-	  if (t instanceof CollectionType)
+	Classifier baseElementType(Classifier t) {		
+	  if (t instanceof CollectionType && ! (t instanceof VoidType))
 		  return baseElementType(((CollectionType)t).getElementType());
 	  else
 		  return t;

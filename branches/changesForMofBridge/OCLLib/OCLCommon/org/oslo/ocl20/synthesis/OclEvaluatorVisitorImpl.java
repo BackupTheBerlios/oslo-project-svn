@@ -943,11 +943,11 @@ public Object visit(PropertyCallExp host, Object data) {
             boolean isStatic = false; // TODO TODOMWA refactor !!!
             Object javaSource = null;
             if (host.getSource() != null) {
-                Classifier sourceType = host.getSource().getType();
+//                Classifier sourceType = host.getSource().getType();
                 source = (OclAny) host.getSource().accept(this, data);
-                Classifier c = (Classifier)source.oclType().asJavaObject();
-                String propertyName = prop.getName();
-                prop = c.lookupProperty(propertyName);
+// TODO TODOMWA                Classifier c = (Classifier)source.oclType().asJavaObject();
+//                String propertyName = prop.getName();
+//                prop = c.lookupProperty(propertyName);
             } else {
                 isStatic = true;
             }

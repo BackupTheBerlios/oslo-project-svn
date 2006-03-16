@@ -53,7 +53,12 @@ public class OclAnyTypeImpl
 				TypeType tt = (TypeType)types.get(0);
 				return super.processor.getBridgeFactory().buildOperation(tt.getClassifier(), "oclAsType", new Classifier[] {tt.getClassifier()});
 			} else if (name.equals("allInstances")) {
-				SetType setT = super.processor.getTypeFactory().buildSetType(this);
+				SetType setT = null; // TODO TODOMWA make correct !!
+				if (this instanceof TypeType) {
+					setT = super.processor.getTypeFactory().buildSetType(((TypeType)this).getClassifier());					
+				} else {
+					setT = super.processor.getTypeFactory().buildSetType(this);					
+				}
 				return super.processor.getBridgeFactory().buildOperation(setT, "allInstances", null);
 			}
 		}

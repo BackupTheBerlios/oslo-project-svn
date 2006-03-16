@@ -264,9 +264,17 @@ public class OclSemanticAnalyserVisitorImpl extends VisitorImpl implements astVi
         // TODO TODOMWA make beauty
         
         
-//old        newEnv = env.addVariableDeclaration("self", contextCls, Boolean.TRUE);
-        newEnv = contextCls.getEnvironmentWithParents().addVariableDeclaration("self", contextCls, Boolean.TRUE);
-        
+//        newEnv = env.addVariableDeclaration("self", contextCls, Boolean.TRUE);
+//        if (contextCls != null ) {
+//            Environment dummy = contextCls.getEnvironmentWithParents();
+//        	if (dummy != null) {
+//            	newEnv = contextCls.getEnvironmentWithParents().addVariableDeclaration("self", contextCls, Boolean.TRUE);
+//       		} else {
+//            	newEnv = env.addVariableDeclaration("self", contextCls, Boolean.TRUE);       			
+//       		}
+//        } else {
+        	newEnv = env.addVariableDeclaration("self", contextCls, Boolean.TRUE);
+//        }
         /*
         semContext.setReferredNamespace((Namespace) env.lookupPathName(host.getPathName()));
         //--- Search for pathName classifier ---
@@ -299,6 +307,7 @@ public class OclSemanticAnalyserVisitorImpl extends VisitorImpl implements astVi
             semConstraints.add(asConstraint.accept(this, newData));
         }
         semContext.setConstraint(semConstraints);
+  //      newData.put("env", env.addVariableDeclaration("self", processor.getTypeFactory().buildVoidType(), Boolean.TRUE));
         return semContext;
     }
     /** Visit class 'uk.ac.ukc.cs.kmf.ocl20.AS.Contexts.PropertyContextDeclAS' */

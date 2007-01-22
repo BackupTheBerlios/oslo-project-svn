@@ -10,23 +10,23 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.oslo.ocl20.semantics.SemanticsVisitor;
 import org.oslo.ocl20.semantics.bridge.Classifier;
 import org.oslo.ocl20.semantics.bridge.EnumLiteral;
-import org.oslo.ocl20.semantics.bridge.EnumerationType;
+import org.oslo.ocl20.semantics.bridge.Enumeration;
 
 
-public class EnumLiteralImpl implements EnumLiteral {
+public class EnumLiteralImpl extends org.oslo.ocl20.semantics.bridge.impl.EnumLiteralImpl implements EnumLiteral {
 
 	protected EEnumLiteral _eenumLit;
-	public EnumLiteralImpl(EEnumLiteral eenumLit, EnumerationType parent) {
+	public EnumLiteralImpl(EEnumLiteral eenumLit, Enumeration parent) {
 		_eenumLit = eenumLit;
 		_enum=parent;
 	}
 
-	EnumerationType _enum=null;
-	public EnumerationType getEnumeration() {
+	Enumeration _enum=null;
+	public Enumeration getEnumeration() {
 		return _enum;
 	}
 
-	public void setEnumeration(EnumerationType enumerationType) {
+	public void setEnumeration(Enumeration enumerationType) {
 		_enum = enumerationType;
 	}
 

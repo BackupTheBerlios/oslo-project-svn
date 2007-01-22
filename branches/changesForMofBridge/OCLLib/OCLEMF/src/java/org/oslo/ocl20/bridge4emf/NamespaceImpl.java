@@ -16,7 +16,7 @@ import org.oslo.ocl20.semantics.bridge.Namespace;
  * @author dha
  *
  */
-public class NamespaceImpl implements Namespace {
+public class NamespaceImpl extends org.oslo.ocl20.semantics.bridge.impl.NamespaceImpl implements Namespace {
 
 	protected OclProcessor processor=null;
 

@@ -8,10 +8,12 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.EEnumLiteralImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.oslo.ocl20.OclProcessor;
 import org.oslo.ocl20.semantics.bridge.Classifier;
 import org.oslo.ocl20.semantics.bridge.EnumLiteral;
@@ -39,8 +41,6 @@ public class EmfEvaluationAdapter
 	implements ModelEvaluationAdapter
 {
 	protected OclProcessor processor;
-	private static List list_ = new ArrayList();
-	private static List visit_list_ = new ArrayList();
 	
 	public EmfEvaluationAdapter(OclProcessor proc) {
 		this.processor = proc;
@@ -63,28 +63,7 @@ public class EmfEvaluationAdapter
 	public String getSetterName(Property property) {
 		return null;
 	}
-	/*
-	public String getModelPropertyName(String getter) {
-		String result = getter.substring(3, getter.length());
-		return result.substring(0, 1).toLowerCase() + result.substring(1, result.length());
-	}
 
-	public String getEnumLiteralReference(EnumLiteral enumLit) {
-		EnumerationType enum = enumLit.getEnumeration();
-		Class enumClass = (Class)enum.getDelegate();
-		EEnumLiteralImpl eLit = (EEnumLiteralImpl)enumLit.getDelegate();
-		String enumName = enumClass.getName();
-		return enumName+".get(\""+enumLit.getName()+"\")";
-	}
-
-	public String getDefinedPropertyReference(OclAny source, DefinedProperty p) {
-		OclAnyImpl src = (OclAnyImpl)source;
-		String clsName = p.getDefinition().getContext().getReferredNamespace().getName();
-		String pName = p.getName();
-		String s = clsName+"."+pName+"("+source+")";
-		return s;
-	}
-*/
 	// --- For Evaluation ---
 
 	public Object getEnumLiteralValue(EnumLiteral enumLit) {
@@ -93,8 +72,22 @@ public class EmfEvaluationAdapter
 
 	// Model element
 	public boolean OclModelElement_equalTo(OclAny o1, OclAny o2) {
+		if (o1 == null && o2 == null) {
+			return true;
+		}
+		if (o1 == null || o2 == null) {
+			return false;
+		}
+		
 		Object obj1 = o1.asJavaObject();
 		Object obj2 = o2.asJavaObject();
+		if (obj1 instanceof EObject && obj2 instanceof EObject &&
+				EcoreUtil.getID((EObject)obj1) != null &&
+				EcoreUtil.getID((EObject)obj2) != null) {
+			if (obj1 != null) {
+				return EcoreUtil.getID((EObject)obj1).equals(EcoreUtil.getID((EObject)obj2));
+			}
+		}
 		return obj1.equals(obj2);
 	}
 	public boolean OclModelElement_oclIsNew(OclAny o1) {
@@ -117,20 +110,49 @@ public class EmfEvaluationAdapter
 		return cType.isAssignableFrom(cObj.getInstanceClass());
 	}
 	public OclSet OclType_allInstances(OclType self) {
-		OclModelElementType InstanceName = (OclModelElementType)self.asJavaObject();
-		
-		RuntimeEnvironment renv = this.processor.getRuntimeEnvironment();
-		
-		EObject eobject = (EObject)renv.getValue("self");
-		
-		findInstances(InstanceName.getName(),eobject);
-		
-		OclSet set=this.processor.getStdLibAdapter().Collection( (Collection) list_).asSet();
-		list_.clear();
-		visit_list_.clear();
-		return set;
-		/*return null;*/
-	}
+        OclModelElementType InstanceName = 
+(OclModelElementType)self.asJavaObject();
+        EClass InstanceTyp = (EClass) 
+((OclModelElementTypeImpl)self.asJavaObject()).getImplementation();
+        List InstancesList = new ArrayList();
+        
+        // [HEINI]
+        
+        RuntimeEnvironment renv = this.processor.getRuntimeEnvironment();
+        
+        EObject eobject = (EObject)renv.getValue("self");
+        TreeIterator iter = eobject.eResource().getAllContents();
+        while (iter.hasNext())
+        {
+            EObject content = (EObject)iter.next();
+            if (content.getClass().getName().equals(InstanceTyp.getName()))
+            {
+                if (!(InstancesList.contains(content)))
+                {
+                    InstancesList.add(content);
+                    
+                }
+            }
+            
+            if (InstanceTyp.isSuperTypeOf(content.eClass()))
+            {
+                if (!(InstancesList.contains(content)))
+                {
+                    InstancesList.add(content);
+                    
+                }
+            }
+        }
+        //findInstances(InstanceName.getName(),eobject);
+        
+        OclSet set=this.processor.getStdLibAdapter().Collection( 
+(Collection) InstancesList).asSet();
+        //list_.clear();
+        //visit_list_.clear();
+        return set;
+        /*return null;*/
+    }
+
 
 	public OclType OclModelElement_oclType(OclAnyModelElement self) {
 		EObject eObj = (EObject)self.asJavaObject();
@@ -196,90 +218,6 @@ public class EmfEvaluationAdapter
 		return ecls.getInstanceClass();
 	}
 	
-	private static void findInstances(String InstanceName, EObject object)
-	{
-		if (object.eClass().getName().toString().equals(InstanceName))
-		{
-			if (!(list_.contains(object)))
-			{
-				list_.add(object);
-				
-				//System.out.println(list_.size()+":"+eo);
-			}
-		}
-		
-		EList elist = object.eClass().getEAllStructuralFeatures();
-		
-		for (int l=0; l<elist.size();l++)
-		{
-			EStructuralFeature sf = (EStructuralFeature)elist.get(l);
-						
-			
-			if (sf.eClass().getName()=="EReference")
-			{
-				
-				//System.out.println(sf);
-				if (sf!=null) {
-					Object obj = object.eGet(sf);
-					
-					if (obj instanceof EList) {
-						EList li_ = (EList)obj;
-						for (int a=0; a<li_.size();a++)
-						{
-							EObject eo = (EObject)li_.get(a);
-							
-							
-							if (eo.eClass().getName().toString().equals(InstanceName))
-							{
-								//System.out.println(eo);
-								if (!(list_.contains(eo)))
-								{
-									list_.add(eo);
-									
-									//System.out.println(list_.size()+":"+eo);
-								}
-						
-							}
-							
-							if (!visit_list_.contains(eo)) {
-								visit_list_.add(eo);
-								findInstances(InstanceName,eo);
-							}
-						 }
-					}
-					
-					if (obj instanceof EObject) {
-						EObject eo = (EObject)obj;
-						
-						if (eo!=null) {
-							
-							if (eo.eClass().getName().toString().equals(InstanceName))
-							{
-								//System.out.println(eo);
-								if (!(list_.contains(eo)))
-								{
-									list_.add(eo);
-									//System.out.println(list_.size()+":"+eo);
-								}																			
-							}
-							
-							if (!visit_list_.contains(eo)) {
-								//System.out.println(eo);
-								visit_list_.add(eo);
-								findInstances(InstanceName,eo);
-								//visit_list_.add(eo);
-							}
-							
-						}
-						
-						visit_list_.add(eo);
-					}
-				}
-			}
-			
-		}
-		
-	}
 
     public Object getValueForFeauture(Object source, Property property) {
         if (source instanceof EObject) {

@@ -13,7 +13,7 @@ import org.oslo.ocl20.semantics.bridge.Property;
  * @author dha
  *
  */
-public class PropertyImpl implements Property {
+public class PropertyImpl extends org.oslo.ocl20.semantics.bridge.impl.PropertyImpl implements Property {
 
 	EStructuralFeature _impl;
 	OclProcessor processor;

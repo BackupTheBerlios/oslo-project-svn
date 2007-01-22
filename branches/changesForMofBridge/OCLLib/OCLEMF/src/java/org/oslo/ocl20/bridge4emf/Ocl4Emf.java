@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
 
+import uk.ac.kent.cs.kmf.util.ConsoleLog;
 import uk.ac.kent.cs.kmf.util.ILog;
 
 /**
@@ -50,5 +51,13 @@ public class Ocl4Emf {
 	public static void InitModel(EPackage model, ILog log) {
 		processor = new EmfOclProcessorImpl(log);
 		processor.addModel(model);
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("test0");
+		processor = new EmfOclProcessorImpl(new ConsoleLog());
+//		processor.evaluate("context Integer def: inc() : Integer = self + 1  context OclVoid inv: 1.inc()");
+		System.out.println(processor.evaluate("context Integer def: inc() : Integer = self + 1  context OclVoid inv: 1.inc()").toString());
+		System.out.println("test1");
 	}
 }

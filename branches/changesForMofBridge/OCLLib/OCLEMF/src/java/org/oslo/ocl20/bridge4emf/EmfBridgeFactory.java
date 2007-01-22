@@ -11,28 +11,29 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.oslo.ocl20.OclProcessor;
-import org.oslo.ocl20.semantics.bridge.BridgeFactoryImpl;
+import org.oslo.ocl20.semantics.factories.BridgeFactoryImpl;
+import org.oslo.ocl20.semantics.bridge.BridgeFactory;
 import org.oslo.ocl20.semantics.bridge.Classifier;
 import org.oslo.ocl20.semantics.bridge.EnumLiteral;
-import org.oslo.ocl20.semantics.bridge.EnumerationType;
+import org.oslo.ocl20.semantics.bridge.Enumeration;
 import org.oslo.ocl20.semantics.bridge.Environment;
 import org.oslo.ocl20.semantics.bridge.ModelElement;
 import org.oslo.ocl20.semantics.bridge.Namespace;
 import org.oslo.ocl20.semantics.bridge.OclModelElementType;
 import org.oslo.ocl20.semantics.bridge.Operation;
+import org.oslo.ocl20.semantics.bridge.Parameter;
 import org.oslo.ocl20.semantics.bridge.Property;
-
 
 /**
  * @author dha
- *
+ * 
  */
 public class EmfBridgeFactory extends BridgeFactoryImpl {
-	
+
 	public EmfBridgeFactory(OclProcessor proc) {
 		super(proc);
 	}
-	
+
 	public Environment buildEnvironment(EPackage ePkg) {
 		Namespace ns = new NamespaceImpl(ePkg, super.processor);
 		Environment env = super.buildEnvironment();
@@ -50,19 +51,22 @@ public class EmfBridgeFactory extends BridgeFactoryImpl {
 		if (params != null) {
 			for (int i = 0; i < params.length; i++) {
 				Classifier paramType = (Classifier) params[i];
-				//oper.getParameterNames().add(paramName);
-				oper.getParameterTypes().add(paramType);
+				Parameter parameter = BridgeFactory.eINSTANCE.createParameter();
+				parameter.setType(paramType);
+				parameter.setName("arg" + i);
+				oper.getOwnedParameter().add(parameter);
 			}
 		}
 		return oper;
 	}
 
 	Map _properties = new HashMap();
+
 	public Property buildProperty(EStructuralFeature sf) {
-		Property p = (Property)_properties.get(sf);
-		if (p==null) {
+		Property p = (Property) _properties.get(sf);
+		if (p == null) {
 			p = new PropertyImpl(sf, super.processor);
-			_properties.put(sf,p);
+			_properties.put(sf, p);
 		}
 		return p;
 	}
@@ -80,18 +84,18 @@ public class EmfBridgeFactory extends BridgeFactoryImpl {
 
 	public ModelElement buildModelElement(Object o) {
 		if (o instanceof EClass) {
-			return buildOclModelElementType((EClass)o);
+			return buildOclModelElementType((EClass) o);
 		} else if (o instanceof EEnum) {
 			return buildEnumeration_((EEnum) o);
 		} else if (o instanceof EDataType) {
-			EDataType dt = (EDataType)o;
+			EDataType dt = (EDataType) o;
 			Class c = dt.getInstanceClass();
 			if (c == String.class)
 				return super.processor.getTypeFactory().buildStringType();
 			else if (c == Integer.class || c.getName().equals("int"))
 				return super.processor.getTypeFactory().buildIntegerType();
-//			else if (c == Long.class || c.getName().equals("long"))
-//				return super.processor.getTypeFactory().buildLongType();
+			// else if (c == Long.class || c.getName().equals("long"))
+			// return super.processor.getTypeFactory().buildLongType();
 			else if (c == Boolean.class || c.getName().equals("boolean"))
 				return super.processor.getTypeFactory().buildBooleanType();
 			else if (c == Float.class || c.getName().equals("float"))
@@ -99,70 +103,73 @@ public class EmfBridgeFactory extends BridgeFactoryImpl {
 			else if (c == Double.class || c.getName().equals("double"))
 				return super.processor.getTypeFactory().buildRealType();
 			else {
-				return buildOclModelElementType(dt); 
+				return buildOclModelElementType(dt);
 			}
 		}
 		return null;
 	}
 
 	Map _modelElementTypes = new HashMap();
-	public void resetModelElementType() {_modelElementTypes.clear(); }
-	
+
+	public void resetModelElementType() {
+		_modelElementTypes.clear();
+	}
+
 	public OclModelElementType buildOclModelElementType(EClassifier ecls) {
-		OclModelElementType t = (OclModelElementType)_modelElementTypes.get(ecls);
+		OclModelElementType t = (OclModelElementType) _modelElementTypes.get(ecls);
 		if (t == null) {
 			t = new OclModelElementTypeImpl(ecls, super.processor);
-			_modelElementTypes.put(ecls,t);
+			_modelElementTypes.put(ecls, t);
 		}
-		return t; 
+		return t;
 	}
-	
-	public EnumerationType buildEnumeration_(EEnum eenum) {
+
+	public Enumeration buildEnumeration_(EEnum eenum) {
 		return new EnumerationImpl(eenum, super.processor);
 	}
 
-	public EnumLiteral buildEnumLiteral(EEnumLiteral eenumLit, EnumerationType enumerationType) {
+	public EnumLiteral buildEnumLiteral(EEnumLiteral eenumLit, Enumeration enumerationType) {
 		return new EnumLiteralImpl(eenumLit, enumerationType);
 	}
 
 	public OclModelElementType buildOclModelElementType(Object o) {
 		if (o instanceof EClass)
-			return buildOclModelElementType((EClass)o);
+			return buildOclModelElementType((EClass) o);
 		else
 			return null;
 	}
 
-	public EnumerationType buildEnumeration(Object o) {
+	public Enumeration buildEnumeration(Object o) {
 		if (o instanceof EEnum)
-			return buildEnumeration((EEnum)o);
+			return buildEnumeration((EEnum) o);
 		else
 			return null;
 	}
 
 	public EnumLiteral buildEnumLiteral(Object o) {
 		if (o instanceof EEnumLiteral)
-			return buildEnumLiteral((EEnumLiteral)o);
+			return buildEnumLiteral((EEnumLiteral) o);
 		else
 			return null;
 	}
 
 	public Classifier buildClassifier(Object o) {
 		if (o instanceof EClassifier)
-			return this.buildClassifier((EClassifier)o);
+			return this.buildClassifier((EClassifier) o);
 		else
 			return null;
 	}
 
 	public Namespace buildNamespace(Object o) {
 		if (o instanceof EPackage)
-			return this.buildNamespace((EPackage)o);
+			return this.buildNamespace((EPackage) o);
 		else
 			return null;
 	}
 
 	public Property buildProperty(Object o) {
 		if (o instanceof EStructuralFeature)
-			return this.buildProperty((EStructuralFeature)o);
+			return this.buildProperty((EStructuralFeature) o);
 		else
 			return null;
 	}

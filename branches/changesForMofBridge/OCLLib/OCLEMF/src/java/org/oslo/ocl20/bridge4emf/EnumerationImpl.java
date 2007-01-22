@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EPackage;
@@ -17,7 +18,7 @@ import org.oslo.ocl20.OclProcessor;
 import org.oslo.ocl20.semantics.SemanticsVisitor;
 import org.oslo.ocl20.semantics.bridge.Classifier;
 import org.oslo.ocl20.semantics.bridge.EnumLiteral;
-import org.oslo.ocl20.semantics.bridge.EnumerationType;
+import org.oslo.ocl20.semantics.bridge.Enumeration;
 import org.oslo.ocl20.semantics.bridge.ModelElement;
 import org.oslo.ocl20.semantics.bridge.Property;
 import org.oslo.ocl20.standard.types.OclAnyTypeImpl;
@@ -29,11 +30,10 @@ import org.oslo.ocl20.standard.types.OclAnyTypeImpl;
  * To change the template for this generated type comment go to
  * Window>Preferences>Java>Code Generation>Code and Comments
  */
-public class EnumerationImpl extends OclAnyTypeImpl implements EnumerationType {
+public class EnumerationImpl extends org.oslo.ocl20.semantics.bridge.impl.EnumerationImpl implements Enumeration {
 
 	protected EEnum _eenum;
 	public EnumerationImpl(EEnum eenum, OclProcessor proc) {
-		super(proc);
 		_eenum = eenum;
 		
 		super.createOperations(processor.getTypeFactory());
@@ -60,7 +60,7 @@ public class EnumerationImpl extends OclAnyTypeImpl implements EnumerationType {
 
 	/** Check if this (an Enumeration) conforms with t2 */
 	public Boolean conformsTo(Classifier t2) {
-		if (t2 instanceof EnumerationType) {
+		if (t2 instanceof Enumeration) {
 			return (getName().equals(t2.getName())) ? Boolean.TRUE : Boolean.FALSE;
 		}
 		return Boolean.FALSE;
@@ -82,17 +82,19 @@ public class EnumerationImpl extends OclAnyTypeImpl implements EnumerationType {
 	}
 	
 	/** Get Enumeration Literals */
-	List literals = null;
-	public List getLiteral() {
+//	List literals = null;
+	public EList getLiteral() {
 		if (_eenum != null) {
-			literals = new Vector();
-			Iterator i = _eenum.getELiterals().iterator();
-			while (i.hasNext()) {
-				EEnumLiteral lit = (EEnumLiteral)i.next();
-				literals.add(((EmfBridgeFactory)super.processor.getBridgeFactory()).buildEnumLiteral(lit, this));
+			if (super.getLiteral().size() == 0) {
+				Iterator i = _eenum.getELiterals().iterator();
+				while (i.hasNext()) {
+					EEnumLiteral lit = (EEnumLiteral)i.next();
+					super.getLiteral().add(((EmfBridgeFactory)super.processor.getBridgeFactory()).buildEnumLiteral(lit, this));
+				}
+				
 			}
 		}
-		return literals;
+		return super.getLiteral();
 	}
 
 	/** Set Enumeration Literals */
@@ -110,8 +112,8 @@ public class EnumerationImpl extends OclAnyTypeImpl implements EnumerationType {
 	
 	/** Equals */
 	public boolean equals(Object o) {
-		if (o instanceof EnumerationType) {
-			EnumerationType enumerationType = (EnumerationType)o;
+		if (o instanceof Enumeration) {
+			Enumeration enumerationType = (Enumeration)o;
 			return getName().equals(enumerationType.getName());
 		}
 		return false;

@@ -1,5 +1,7 @@
 package org.oslo.ocl20.bridge4emf;
 
+import java.io.PrintWriter;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,14 +11,12 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.oslo.ocl20.OclProcessor;
 import org.oslo.ocl20.OclProcessorImpl;
-import org.oslo.ocl20.generation.lib.StdLibGenerationAdapterImpl;
 import org.oslo.ocl20.semantics.analyser.OclDebugVisitorImpl;
 import org.oslo.ocl20.semantics.analyser.OclSemanticAnalyser;
 import org.oslo.ocl20.semantics.analyser.OclSemanticAnalyserImpl;
 import org.oslo.ocl20.semantics.analyser.OclSemanticAnalyserVisitorImpl;
-import org.oslo.ocl20.semantics.bridge.BridgeFactory;
 import org.oslo.ocl20.semantics.bridge.Environment;
-import org.oslo.ocl20.semantics.model.types.TypeFactory;
+import org.oslo.ocl20.semantics.factories.TypeFactory;
 import org.oslo.ocl20.standard.lib.StdLibAdapter;
 import org.oslo.ocl20.standard.lib.StdLibAdapterImpl;
 import org.oslo.ocl20.standard.types.TypeFactoryImpl;
@@ -25,8 +25,6 @@ import org.oslo.ocl20.syntax.parser.OclParserImpl;
 import org.oslo.ocl20.synthesis.ModelEvaluationAdapter;
 import org.oslo.ocl20.synthesis.ModelGenerationAdapter;
 import org.oslo.ocl20.synthesis.OclCodeGenerator;
-import org.oslo.ocl20.synthesis.OclCodeGeneratorImpl;
-import org.oslo.ocl20.synthesis.OclCodeGeneratorVisitorImpl;
 import org.oslo.ocl20.synthesis.OclEvaluator;
 import org.oslo.ocl20.synthesis.OclEvaluatorImpl;
 import org.oslo.ocl20.synthesis.OclEvaluatorVisitorImpl;
@@ -43,7 +41,7 @@ public class EmfOclProcessorImpl extends OclProcessorImpl implements OclProcesso
     private static List list_ = new ArrayList();
 	private static List visit_list_ = new ArrayList();
 	
-    public BridgeFactory getBridgeFactory() {
+    public org.oslo.ocl20.semantics.factories.BridgeFactory getBridgeFactory() {
         return bridgeFactory;
     }
 
@@ -57,7 +55,7 @@ public class EmfOclProcessorImpl extends OclProcessorImpl implements OclProcesso
         return modelImplAdapter;
     }
 
-    ModelGenerationAdapter modelGenAdapter = new EmfGenerationAdapter(this);
+    ModelGenerationAdapter modelGenAdapter = null;//= new EmfGenerationAdapter(this);
     public ModelGenerationAdapter getModelGenerationAdapter() {
         return modelGenAdapter;
     }
@@ -67,7 +65,7 @@ public class EmfOclProcessorImpl extends OclProcessorImpl implements OclProcesso
         return stdLibAdapter;
     }
 
-    StdLibAdapter stdLibGenerationAdapter = new StdLibGenerationAdapterImpl(this);
+    StdLibAdapter stdLibGenerationAdapter = null;//= new StdLibGenerationAdapterImpl(this);
     public StdLibAdapter getStdLibGenerationAdapter() {
         return stdLibGenerationAdapter;
     }
@@ -94,9 +92,9 @@ public class EmfOclProcessorImpl extends OclProcessorImpl implements OclProcesso
         return evaluator;
     }
 
-	public OclCodeGeneratorImpl generator = new OclCodeGeneratorImpl( this, new OclCodeGeneratorVisitorImpl(null,this) );
+//	public OclCodeGeneratorImpl generator = new OclCodeGeneratorImpl( this, new OclCodeGeneratorVisitorImpl(null,this) );
     public OclCodeGenerator getGenerator() {
-        return generator;
+        return null;//generator;
     }
 
     public void addModel(Object mdl) {
@@ -222,6 +220,11 @@ public class EmfOclProcessorImpl extends OclProcessorImpl implements OclProcesso
 			}
 			
 		}
+		
+	}
+
+	public void generate(Reader input, PrintWriter output, String pkgName, String className, ILog log) {
+		// TODO Auto-generated method stub
 		
 	}
 }

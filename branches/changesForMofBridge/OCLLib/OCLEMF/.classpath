@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path=""/>
+	<classpathentry kind="src" path="src/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="/OCLCommon"/>
-	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.emf.common_2.1.0/runtime/common.jar"/>
-	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.emf.ecore_2.1.0/runtime/ecore.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.emf.ecore_2.1.0.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.emf.common_2.1.0.jar"/>
 	<classpathentry kind="lib" path="libs/CUPRuntime.jar"/>
 	<classpathentry kind="lib" path="libs/KMF_Util.jar"/>
 	<classpathentry kind="lib" path="libs/KMF_XMI.jar"/>
 	<classpathentry kind="lib" path="libs/KMFpatterns.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OclCommonBasedOnEMF"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

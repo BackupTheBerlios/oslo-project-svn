@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
@@ -78,8 +79,11 @@ public class OclModelElementTypeImpl extends OclAnyTypeImpl implements OclModelE
         return prop;
     }
 
-    public List getProperties() {
-        return new Vector(_properties.values());
+    public EList getProperties() {
+    	if (super.getProperties().size() == 0) {
+    		super.getProperties().addAll(_properties.values());
+    	}
+        return super.getProperties();
     }
 
     public void addProperty(Property p) {

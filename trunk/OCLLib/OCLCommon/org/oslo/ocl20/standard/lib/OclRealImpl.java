@@ -31,11 +31,15 @@ public class OclRealImpl extends OclAnyImpl implements OclReal {
 
 	//--- IOclReal ---
 	public OclReal add(OclReal r2) {
-		return adapter.Real(this.implementation() + ((OclRealImpl) r2).implementation());
+		if (!(r2 instanceof OclUndefined))
+			return adapter.Real(this.implementation() + ((OclRealImpl) r2).implementation());
+		return null;
 	}
 
 	public OclReal subtract(OclReal r2) {
-		return adapter.Real(this.implementation() - ((OclRealImpl) r2).implementation());
+		if (!(r2 instanceof OclUndefined))
+			return adapter.Real(this.implementation() - ((OclRealImpl) r2).implementation());
+		return null;
 	}
 
 	public OclReal multiply(OclReal r2) {
@@ -47,7 +51,7 @@ public class OclRealImpl extends OclAnyImpl implements OclReal {
 	}
 
 	public OclReal divide(OclReal r2) {
-		if (((Double)r2.asJavaObject()).doubleValue() == 0) return adapter.Undefined();
+		if (((java.lang.Number)r2.asJavaObject()).doubleValue() == 0) return adapter.Undefined();
 		return adapter.Real(this.implementation() / ((OclRealImpl) r2).implementation());
 	}
 
@@ -105,7 +109,8 @@ public class OclRealImpl extends OclAnyImpl implements OclReal {
 	public int hashCode() {
 		return (int) implementation();
 	}
-
+	
+	
 	public Object clone() {
 		return new OclRealImpl(implementation(), super.adapter);
 	}

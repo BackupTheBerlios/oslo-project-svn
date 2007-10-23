@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="/OCLCommon"/>
 	<classpathentry kind="lib" path="libs/CUPRuntime.jar"/>
 	<classpathentry kind="lib" path="libs/KMF_Util.jar"/>
 	<classpathentry kind="lib" path="libs/KMF_XMI.jar"/>
@@ -10,5 +9,6 @@
 	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.emf.ecore_2.3.1.v200709252135.jar"/>
 	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.emf.ecore.xmi_2.3.1.v200709252135.jar"/>
 	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.emf.common_2.3.0.v200709252135.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OCLCommon"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

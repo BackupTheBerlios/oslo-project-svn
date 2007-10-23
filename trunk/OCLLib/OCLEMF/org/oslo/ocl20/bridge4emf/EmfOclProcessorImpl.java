@@ -1,6 +1,7 @@
 package org.oslo.ocl20.bridge4emf;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -22,6 +23,9 @@ import org.oslo.ocl20.semantics.model.types.TypeFactory;
 import org.oslo.ocl20.standard.lib.StdLibAdapter;
 import org.oslo.ocl20.standard.lib.StdLibAdapterImpl;
 import org.oslo.ocl20.standard.types.TypeFactoryImpl;
+import org.oslo.ocl20.syntax.ast.contexts.ClassifierContextDeclAS;
+import org.oslo.ocl20.syntax.ast.contexts.PackageDeclarationAS;
+import org.oslo.ocl20.syntax.ast.types.ClassifierAS;
 import org.oslo.ocl20.syntax.parser.OclParser;
 import org.oslo.ocl20.syntax.parser.OclParserImpl;
 import org.oslo.ocl20.synthesis.ModelEvaluationAdapter;
@@ -116,33 +120,23 @@ public class EmfOclProcessorImpl extends OclProcessorImpl implements OclProcesso
 
     public List evaluate_2(String str, Environment env, RuntimeEnvironment renv, ILog log)
     {
-    	String context;
+    	// parse constraints
+    	List<String> contextpathnames = getContextPathNames(str);
+    	    	
+    	
     	List InstancesList = new ArrayList();
-    	int p=str.indexOf("inv:");
-    	context=str.substring(8,p);
-    	context=context.replaceAll(" ","");
     	
     	EObject eobject = (EObject)renv.getValue("self");
-    	    	
-		TreeIterator iter = eobject.eResource().getAllContents();
-		while (iter.hasNext())
-		{
-			EObject content = (EObject)iter.next();
-			if (content.eClass().getName().toString().equals(context))
-			{
-				if (!(InstancesList.contains(content)))
-				{
-					InstancesList.add(content);
-					
-				}
-			}
+    	
+    	for (int i=0; i<contextpathnames.size(); i++)
+    	{
+    		String context = contextpathnames.get(i);
+			TreeIterator iter = eobject.eResource().getAllContents();
 			
-			List supertypes = content.eClass().getEAllSuperTypes();
-			
-			for (int s=0; s<supertypes.size(); s++)
+			while (iter.hasNext())
 			{
-				EClass eclass = (EClass)supertypes.get(s);
-				if (eclass.getName().toString().equals(context))
+				EObject content = (EObject)iter.next();
+				if (content.eClass().getName().toString().equals(context))
 				{
 					if (!(InstancesList.contains(content)))
 					{
@@ -150,9 +144,24 @@ public class EmfOclProcessorImpl extends OclProcessorImpl implements OclProcesso
 						
 					}
 				}
+				
+				List supertypes = content.eClass().getEAllSuperTypes();
+				
+				for (int s=0; s<supertypes.size(); s++)
+				{
+					EClass eclass = (EClass)supertypes.get(s);
+					if (eclass.getName().toString().equals(context))
+					{
+						if (!(InstancesList.contains(content)))
+						{
+							InstancesList.add(content);
+							
+						}
+					}
+				}
+				
 			}
-			
-		}
+    	}
     	//list_.clear();
     	//visit_list_.clear();
     	
@@ -162,14 +171,77 @@ public class EmfOclProcessorImpl extends OclProcessorImpl implements OclProcesso
     	
     	for (int i=0; i<InstancesList.size(); i++)
     	{
-    		RuntimeEnvironment renv_ = runtimeEnvironment("self", (EObject)InstancesList.get(i));
+    		RuntimeEnvironment renv_ = runtimeEnvironment("self", (EObject)InstancesList.get(i));  
+    		String name = getNodename((EObject)InstancesList.get(i));
     		List list=evaluate(str,env,renv_,log);
-    		if (list!=null){
+    		
+    		/*if (list!=null){
+    			for (Iterator it = list.iterator(); it.hasNext(); ) {
+					Object obj = (Object) it.next();
+					EvaluateResult er = new EvaluateResult(name, obj);
+//					System.err.println(er);
+					wholelist.add(obj);
+				}    		
+    		}*/
     		wholelist.addAll(list);
-    		}
     	}
     	return wholelist;
     }
+    
+    private List<String> getContextPathNames(String constraints)
+    {
+    	PackageDeclarationAS packageDeclarationAS = parse(constraints);
+    	List<String> contextpathnames = new ArrayList<String>();
+    	List contextDecls = packageDeclarationAS.getContextDecls();
+    	for (int i=0; i<contextDecls.size();i++)
+    	{
+    		if (contextDecls.get(i) instanceof ClassifierContextDeclAS)
+    		{
+    			ClassifierContextDeclAS classifierContextDeclAS = 
+    				(ClassifierContextDeclAS)contextDecls.get(i);
+    			if (classifierContextDeclAS.getType() instanceof ClassifierAS)
+    			{
+    				ClassifierAS classifierAS = 
+    					(ClassifierAS)classifierContextDeclAS.getType();
+    				List pathnames = classifierAS.getPathName();
+    				String name = (String)pathnames.get(pathnames.size()-1);
+    				if (!(contextpathnames.contains(name)))
+    				{
+    					contextpathnames.add(name);
+    				}
+    			}
+    		}
+    	}
+    	
+    	return contextpathnames;
+    }
+    
+    
+    private String getNodename(EObject object)
+    {
+        List list = object.eClass().getEAllStructuralFeatures();
+        EStructuralFeature name = null;
+        for (Iterator it = list.iterator(); it.hasNext(); ) {
+			name = (EStructuralFeature) it.next();
+			if (name.getEType().getName().matches(".*(?i)string.*") && object.eGet(name) != null && object.eGet(name).toString().trim().length() != 0) {
+				break;
+			}
+		}
+        
+        String nodename = "";
+        if(name == null)
+            name = object.eClass().getEStructuralFeature("Name");
+        if(name != null)
+        {
+            if(object.eGet(name) != null)
+                nodename = object.eGet(name).toString();
+        } else
+        {
+            nodename = object.eClass().getName();
+        }
+        return nodename;
+    }
+
     
     private static void findInstances(String InstanceName, EObject object)
 	{

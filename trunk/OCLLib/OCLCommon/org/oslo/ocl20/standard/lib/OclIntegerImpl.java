@@ -21,11 +21,15 @@ public class OclIntegerImpl extends OclRealImpl implements OclInteger {
 	}
 
 	public OclInteger add(OclInteger i2) {
-		return adapter.Integer(this.int_impl() + ((OclIntegerImpl) i2).int_impl());
+		if (!(i2 instanceof OclUndefined))
+			return adapter.Integer(this.int_impl() + ((OclIntegerImpl) i2).int_impl());
+		return null;
 	}
 
 	public OclInteger subtract(OclInteger i2) {
-		return adapter.Integer(this.int_impl() - ((OclIntegerImpl) i2).int_impl());
+		if (!(i2 instanceof OclUndefined))
+			return adapter.Integer(this.int_impl() - ((OclIntegerImpl) i2).int_impl());
+		return null;
 	}
 
 	public OclInteger multiply(OclInteger i2) {

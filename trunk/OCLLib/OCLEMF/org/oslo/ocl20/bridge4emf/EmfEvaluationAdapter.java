@@ -11,6 +11,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 import org.eclipse.emf.ecore.impl.EEnumLiteralImpl;
 import org.oslo.ocl20.OclProcessor;
 import org.oslo.ocl20.semantics.bridge.Classifier;
@@ -147,6 +148,17 @@ public class EmfEvaluationAdapter
 		while (iter.hasNext())
 		{
 			EObject content = (EObject)iter.next();
+			if (content instanceof DynamicEObjectImpl)
+			{
+				if (content.eClass().getName().equals(InstanceTyp.getName()))
+				{
+					if (!(InstancesList.contains(content)))
+					{
+						InstancesList.add(content);
+						
+					}
+				}
+			}
 			if (content.getClass().getName().equals(InstanceTyp.getName()))
 			{
 				if (!(InstancesList.contains(content)))
@@ -155,6 +167,8 @@ public class EmfEvaluationAdapter
 					
 				}
 			}
+			
+			
 			
 			if (InstanceTyp.isSuperTypeOf(content.eClass()))
 			{

@@ -28,4 +28,6 @@ Export-Package: .,
  uk.ac.kent.cs.kmf.util;uses:="javax.swing",
  uk.ac.kent.cs.kmf.util.reflection,
  uk.ac.kent.cs.kmf.xmi;uses:="uk.ac.kent.cs.kmf.util,org.xml.sax"
-Require-Bundle: OCLCommon
+Require-Bundle: OCLCommon,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.xmi

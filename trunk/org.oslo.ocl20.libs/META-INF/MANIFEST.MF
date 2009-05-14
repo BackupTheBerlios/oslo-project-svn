@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: OCLLibs Plug-in
+Bundle-SymbolicName: org.oslo.ocl20.libs
+Bundle-Version: 1.0.0
+Bundle-ClassPath: .
+Bundle-Vendor: OSLO
+Export-Package: java_cup.runtime,
+ uk.ac.kent.cs.kmf.patterns,
+ uk.ac.kent.cs.kmf.patterns.association,
+ uk.ac.kent.cs.kmf.util,
+ uk.ac.kent.cs.kmf.util.reflection,
+ uk.ac.kent.cs.kmf.xmi
+Require-Bundle: org.eclipse.core.runtime

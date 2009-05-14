@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Emf Plug-in
+Bundle-SymbolicName: org.oslo.ocl20.emf
+Bundle-Version: 1.0.0
+Bundle-Vendor: oslo
+Require-Bundle: org.oslo.ocl20.common,
+ org.eclipse.emf.ecore
+Export-Package: org.oslo.ocl20.bridge4emf

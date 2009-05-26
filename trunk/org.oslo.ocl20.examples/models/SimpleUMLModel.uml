@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA">
+  <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="SimpleUMLModel">
+    <packagedElement xmi:type="uml:Class" xmi:id="_ZC4hMEkREd6nF6FJyA4Arg" name="Company"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_aIxLMEkREd6nF6FJyA4Arg" name="Employee">
+      <ownedAttribute xmi:id="_s8tLUEkREd6nF6FJyA4Arg" name="isManager" type="_xndDMEkREd6nF6FJyA4Arg"/>
+      <ownedAttribute xmi:id="_4tMW0kkREd6nF6FJyA4Arg" name="name" type="_zbZtEEkREd6nF6FJyA4Arg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_a8K-EEkREd6nF6FJyA4Arg" name="Department">
+      <ownedAttribute xmi:id="_9GQBwEkREd6nF6FJyA4Arg" name="number" type="_7OtRUEkREd6nF6FJyA4Arg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_ew5M4EkREd6nF6FJyA4Arg" name="Association1" memberEnd="_ew5M4UkREd6nF6FJyA4Arg _ew5M5EkREd6nF6FJyA4Arg" navigableOwnedEnd="_ew5M5EkREd6nF6FJyA4Arg _ew5M4UkREd6nF6FJyA4Arg">
+      <ownedEnd xmi:id="_ew5M4UkREd6nF6FJyA4Arg" name="company" type="_ZC4hMEkREd6nF6FJyA4Arg" association="_ew5M4EkREd6nF6FJyA4Arg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ew5M4kkREd6nF6FJyA4Arg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ew5M40kREd6nF6FJyA4Arg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_ew5M5EkREd6nF6FJyA4Arg" name="departments" type="_a8K-EEkREd6nF6FJyA4Arg" isUnique="false" association="_ew5M4EkREd6nF6FJyA4Arg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ew5M5UkREd6nF6FJyA4Arg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ew5M5kkREd6nF6FJyA4Arg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_m3_24EkREd6nF6FJyA4Arg" name="Association2" memberEnd="_m3_24UkREd6nF6FJyA4Arg _m3_25EkREd6nF6FJyA4Arg" navigableOwnedEnd="_m3_24UkREd6nF6FJyA4Arg _m3_25EkREd6nF6FJyA4Arg">
+      <ownedEnd xmi:id="_m3_24UkREd6nF6FJyA4Arg" name="department" type="_a8K-EEkREd6nF6FJyA4Arg" association="_m3_24EkREd6nF6FJyA4Arg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_m3_24kkREd6nF6FJyA4Arg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_m3_240kREd6nF6FJyA4Arg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_m3_25EkREd6nF6FJyA4Arg" name="employees" type="_aIxLMEkREd6nF6FJyA4Arg" isUnique="false" association="_m3_24EkREd6nF6FJyA4Arg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_m3_25UkREd6nF6FJyA4Arg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_m3_25kkREd6nF6FJyA4Arg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_wNmUUEkREd6nF6FJyA4Arg">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_xndDMEkREd6nF6FJyA4Arg" name="Boolean"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_zbZtEEkREd6nF6FJyA4Arg" name="String"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_7OtRUEkREd6nF6FJyA4Arg" name="Integer"/>
+  </packagedElement>
+</uml:Model>

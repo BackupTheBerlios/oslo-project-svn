@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompanyModel:Company xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:CompanyModel="http://Company" name="OSLOTech">
+  <departments>
+    <employees isManager="true" name="Christian"/>
+    <employees name="Tom"/>
+    <products name="OSLOLib"/>
+  </departments>
+  <departments number="1">
+    <employees name="Marcus"/>
+    <employees name="Michael"/>
+    <products name="OSLOTest" productID="2"/>
+    <products name="OSLOWebService" productID="3"/>
+  </departments>
+</CompanyModel:Company>

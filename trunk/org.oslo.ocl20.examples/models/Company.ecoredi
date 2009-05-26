@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_Hf7LUEkSEd6nF6FJyA4Arg" activeDiagram="_Hf7LUUkSEd6nF6FJyA4Arg">
+  <model href="Company.ecore#/"/>
+  <diagrams xmi:id="_Hf7LUUkSEd6nF6FJyA4Arg" position="0,0" size="100,100" name="Company" viewport="0,0">
+    <property xmi:id="_HgqLIEkSEd6nF6FJyA4Arg" key="pageFormatName" value="A4"/>
+    <property xmi:id="_HgqLIUkSEd6nF6FJyA4Arg" key="diagramWidth" value="840"/>
+    <property xmi:id="_HgqLIkkSEd6nF6FJyA4Arg" key="diagramHeight" value="1188"/>
+    <property xmi:id="_HgqLI0kSEd6nF6FJyA4Arg" key="pageMarginName" value="Small Margin"/>
+    <property xmi:id="_HgqLJEkSEd6nF6FJyA4Arg" key="diagramTopMargin" value="20"/>
+    <property xmi:id="_HgqLJUkSEd6nF6FJyA4Arg" key="diagramBottomMargin" value="20"/>
+    <property xmi:id="_HgqLJkkSEd6nF6FJyA4Arg" key="diagramLeftMargin" value="20"/>
+    <property xmi:id="_HgqLJ0kSEd6nF6FJyA4Arg" key="diagramRightMargin" value="20"/>
+    <property xmi:id="_HgqLKEkSEd6nF6FJyA4Arg" key="orientation" value="portrait"/>
+    <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Hf7LUkkSEd6nF6FJyA4Arg" presentation="org.topcased.modeler.ecore.ediagram">
+      <element href="Company.ecore#/"/>
+    </semanticModel>
+    <contained xsi:type="di:GraphNode" xmi:id="_Kza8YEkSEd6nF6FJyA4Arg" position="299,296" size="150,-1">
+      <anchorage xmi:id="_MC184UkSEd6nF6FJyA4Arg" graphEdge="_QVy_0EkSEd6nF6FJyA4Arg _aKa7kEkSEd6nF6FJyA4Arg _ko9oIElAEd6nF6FJyA4Arg"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Kza8YUkSEd6nF6FJyA4Arg" presentation="default">
+        <element href="Company.ecore#//Department"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_Kza8YkkSEd6nF6FJyA4Arg">
+        <property xmi:id="_Kza8Y0kSEd6nF6FJyA4Arg" key="eStructuralFeatureID" value="21"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Kza8ZEkSEd6nF6FJyA4Arg" presentation="default">
+          <element href="Company.ecore#//Department"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_VhfookkSEd6nF6FJyA4Arg" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Vhfoo0kSEd6nF6FJyA4Arg" presentation="default">
+            <element href="Company.ecore#//Department/number"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_Kza8ZUkSEd6nF6FJyA4Arg">
+        <property xmi:id="_Kza8ZkkSEd6nF6FJyA4Arg" key="eStructuralFeatureID" value="11"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Kza8Z0kSEd6nF6FJyA4Arg" presentation="default">
+          <element href="Company.ecore#//Department"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_OtkdwEkSEd6nF6FJyA4Arg" position="142,430" size="150,-1">
+      <anchorage xmi:id="_QVyYwEkSEd6nF6FJyA4Arg" graphEdge="_QVy_0EkSEd6nF6FJyA4Arg"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_OtkdwUkSEd6nF6FJyA4Arg" presentation="default">
+        <element href="Company.ecore#//Employee"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_OtkdwkkSEd6nF6FJyA4Arg">
+        <property xmi:id="_Otkdw0kSEd6nF6FJyA4Arg" key="eStructuralFeatureID" value="21"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_OtlE0EkSEd6nF6FJyA4Arg" presentation="default">
+          <element href="Company.ecore#//Employee"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_Sc0WskkSEd6nF6FJyA4Arg" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Sc0Ws0kSEd6nF6FJyA4Arg" presentation="default">
+            <element href="Company.ecore#//Employee/isManager"/>
+          </semanticModel>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_URKpMEkSEd6nF6FJyA4Arg" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_URKpMUkSEd6nF6FJyA4Arg" presentation="default">
+            <element href="Company.ecore#//Employee/name"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_OtlE0UkSEd6nF6FJyA4Arg">
+        <property xmi:id="_OtlE0kkSEd6nF6FJyA4Arg" key="eStructuralFeatureID" value="11"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_OtlE00kSEd6nF6FJyA4Arg" presentation="default">
+          <element href="Company.ecore#//Employee"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_QVy_0EkSEd6nF6FJyA4Arg" anchor="_MC184UkSEd6nF6FJyA4Arg _QVyYwEkSEd6nF6FJyA4Arg">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_QVy_0UkSEd6nF6FJyA4Arg" presentation="default">
+        <element href="Company.ecore#//Department/employees"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_QVy_0kkSEd6nF6FJyA4Arg" id="nameLabel" uDistance="20" vDistance="20"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_QVy_00kSEd6nF6FJyA4Arg" id="cardinalityLabel" uDistance="20" vDistance="-20"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_Y5PnkEkSEd6nF6FJyA4Arg" position="448,437" size="150,-1">
+      <anchorage xmi:id="_aKaUgEkSEd6nF6FJyA4Arg" graphEdge="_aKa7kEkSEd6nF6FJyA4Arg"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Y5PnkUkSEd6nF6FJyA4Arg" presentation="default">
+        <element href="Company.ecore#//Product"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_Y5PnkkkSEd6nF6FJyA4Arg">
+        <property xmi:id="_Y5Pnk0kSEd6nF6FJyA4Arg" key="eStructuralFeatureID" value="21"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Y5PnlEkSEd6nF6FJyA4Arg" presentation="default">
+          <element href="Company.ecore#//Product"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_ds_qckkSEd6nF6FJyA4Arg" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ds_qc0kSEd6nF6FJyA4Arg" presentation="default">
+            <element href="Company.ecore#//Product/name"/>
+          </semanticModel>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_fWMc4kkSEd6nF6FJyA4Arg" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_fWMc40kSEd6nF6FJyA4Arg" presentation="default">
+            <element href="Company.ecore#//Product/productID"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_Y5PnlUkSEd6nF6FJyA4Arg">
+        <property xmi:id="_Y5PnlkkSEd6nF6FJyA4Arg" key="eStructuralFeatureID" value="11"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Y5Pnl0kSEd6nF6FJyA4Arg" presentation="default">
+          <element href="Company.ecore#//Product"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_aKa7kEkSEd6nF6FJyA4Arg" anchor="_MC184UkSEd6nF6FJyA4Arg _aKaUgEkSEd6nF6FJyA4Arg">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_aKa7kUkSEd6nF6FJyA4Arg" presentation="default">
+        <element href="Company.ecore#//Department/products"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_aKa7kkkSEd6nF6FJyA4Arg" id="nameLabel" uDistance="20" vDistance="20"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_aKa7k0kSEd6nF6FJyA4Arg" id="cardinalityLabel" uDistance="20" vDistance="-20"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_ko7L4ElAEd6nF6FJyA4Arg" position="311,100" size="126,-1">
+      <anchorage xmi:id="_ko9BEElAEd6nF6FJyA4Arg" graphEdge="_ko9oIElAEd6nF6FJyA4Arg"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ko7L4UlAEd6nF6FJyA4Arg" presentation="default">
+        <element href="Company.ecore#//Company"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_ko7L4klAEd6nF6FJyA4Arg">
+        <property xmi:id="_ko7L40lAEd6nF6FJyA4Arg" key="eStructuralFeatureID" value="21"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ko7L5ElAEd6nF6FJyA4Arg" presentation="default">
+          <element href="Company.ecore#//Company"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_ko7y8ElAEd6nF6FJyA4Arg" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ko7y8UlAEd6nF6FJyA4Arg" presentation="default">
+            <element href="Company.ecore#//Company/name"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_ko7L5UlAEd6nF6FJyA4Arg">
+        <property xmi:id="_ko7L5klAEd6nF6FJyA4Arg" key="eStructuralFeatureID" value="11"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ko7L50lAEd6nF6FJyA4Arg" presentation="default">
+          <element href="Company.ecore#//Company"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_ko9oIElAEd6nF6FJyA4Arg" anchor="_ko9BEElAEd6nF6FJyA4Arg _MC184UkSEd6nF6FJyA4Arg">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ko9oIUlAEd6nF6FJyA4Arg" presentation="default">
+        <element href="Company.ecore#//Company/departments"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_ko9oIklAEd6nF6FJyA4Arg" id="nameLabel" uDistance="20" vDistance="20"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_ko9oI0lAEd6nF6FJyA4Arg" id="cardinalityLabel" uDistance="20" vDistance="-20"/>
+    </contained>
+  </diagrams>
+</diagrams:Diagrams>

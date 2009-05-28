@@ -6,6 +6,7 @@
 
 package org.oslo.ocl20.synthesis;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collection;
@@ -140,6 +141,58 @@ public class OclEvaluatorVisitorImpl extends SemanticsVisitor$Class implements
 		}
 	}
 
+	/*protected boolean isAssignableFrom(Class oneClass, Class otherClass){
+		if(oneClass.isPrimitive() ^ otherClass.isPrimitive()){
+			Class nonPrimitiveType = null;
+			Class primitiveType = null;
+			
+			if(oneClass.isPrimitive()){
+				nonPrimitiveType = otherClass;
+				primitiveType = oneClass;
+			}
+			else{
+				nonPrimitiveType = oneClass;
+				primitiveType = otherClass;
+			}
+			
+			if (nonPrimitiveType.equals(Byte.class)) return Byte.TYPE.isAssignableFrom(primitiveType);	
+			if (nonPrimitiveType.equals(Short.class)) return Short.TYPE.isAssignableFrom(primitiveType);	
+			if (nonPrimitiveType.equals(Integer.class)) return Integer.TYPE.isAssignableFrom(primitiveType);	
+			if (nonPrimitiveType.equals(Long.class)) return Long.TYPE.isAssignableFrom(primitiveType);
+			if (nonPrimitiveType.equals(Float.class)) return Float.TYPE.isAssignableFrom(primitiveType);
+			if (nonPrimitiveType.equals(Double.class)) return Double.TYPE.isAssignableFrom(primitiveType);
+			if (nonPrimitiveType.equals(Boolean.class)) return Boolean.TYPE.isAssignableFrom(primitiveType);
+			if (nonPrimitiveType.equals(Character.class)) return Character.TYPE.isAssignableFrom(primitiveType);
+		}
+		
+		return oneClass.isAssignableFrom(otherClass);
+	}*/
+	
+	protected boolean isAssignableFrom(Class oneClass, Class otherClass){
+		if(oneClass.isPrimitive() ^ otherClass.isPrimitive()){
+			Class nonPrimitiveType = null;
+			Class primitiveType = null;
+			
+			if(oneClass.isPrimitive()){
+				nonPrimitiveType = otherClass;
+				primitiveType = oneClass;
+			}
+			else{
+				nonPrimitiveType = oneClass;
+				primitiveType = otherClass;
+			}
+			
+			try {
+				Field typeField = nonPrimitiveType.getDeclaredField("TYPE");
+				
+				return ((Class)typeField.get(nonPrimitiveType)).isAssignableFrom(primitiveType);
+			} catch (Exception e) {
+			}
+		}
+		
+		return oneClass.isAssignableFrom(otherClass);
+	}
+
 	/** Get a method using reflection */
 	protected Method getMethod(Object source, String operName, Class[] types)
 			throws Exception {
@@ -162,7 +215,8 @@ public class OclEvaluatorVisitorImpl extends SemanticsVisitor$Class implements
 							&& types.length == argTypes.length) {
 						boolean found = true;
 						for (int j = 0; j < types.length; j++) {
-							if (!argTypes[j].isAssignableFrom(types[j])) {
+							//if (!argTypes[j].isAssignableFrom(types[j])) {
+							if (!isAssignableFrom(argTypes[j], types[j])) {
 								found = false;
 								break;
 							}
